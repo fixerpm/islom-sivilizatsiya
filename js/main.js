@@ -76,3 +76,10 @@ for (let el of products) {
     `
 }
 cards.innerHTML = html
+
+
+let loading = document.querySelector(".loading")
+
+window.addEventListener("load", function () {
+    loading.classList.add("hidden")
+});
