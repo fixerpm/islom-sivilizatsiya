@@ -1,0 +1,2988 @@
+let forumCard = document.querySelector(".forum-card");
+
+let products = [
+    {
+        rasm: "../images/image149.png",
+        mehmon: "Гернот Галиб Станфель\nАвстрия Ислом диний ҳамжамияти вице-президенти",
+        bilet: "Келиш: 07.07.2026 01:00\n(Вена-Боку-\nТошкент J2531)\nКетиш: 10.07.2026\n02:20\n(Тошкент-Боку J2532)\n\n13,906,000",
+        davlati: "АВСТРИЯ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image49.png",
+        mehmon: "Александр Вильгелм\nMüller &Schindler нашриёти директори",
+        bilet: "Келиш: 07.07.2026 00:25\n(Вена-Истанбул-\nТошкент TK370)\nКетиш: 09.07.2026\n02:20\n(Тошкент-Истанбул-\nВена LO-190)\n\n30,801,000",
+        davlati: "АВСТРИЯ",
+        toshkent: "Movenpick hotel",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Меняли ему обратку так как время пересадки не подходило. Штрафов или переплат не было",
+    },
+    {
+        rasm: "../images/image74.png",
+        mehmon: "Рамиз Зекай \nТаълим, мерос ва туризм институти (IEHT) ижрочи директори",
+        bilet: "Келиш: 06.07.2026 22:30\n(Тирана-Истанбул-Ташкент TK362)\nКетиш: 11.07.2026\n02:30\n(Ташкент-Стамбул TK371)\n\n13,152,000",
+        davlati: "АЛБАНИЯ",
+        toshkent: "Inspira hotel\n(st)\n206",
+        samarqand: "SILK WAY \n301",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image184.png",
+        mehmon: "Тақи Муҳаммад \nТадқиқотчи-олим",
+        bilet: "Келиш: 06.07.2026 13:00\n(Шаржа-Тошкент G9273)\nКетиш: 11.07.2026\n17:30\n(Тошкент-Дубай FZ1946)",
+        davlati: "БАНГЛАДЕШ",
+        toshkent: "Inspira \n428",
+        samarqand: "SILK WAY \n121",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image232.png",
+        mehmon: "Сали Шаҳсиварий\n“Ал-Фурқон” Ислом мероси жамғармаси ижрочи директори\nVIP",
+        bilet: "Келиш: 06.07.2026 07:55\n(Лондон-Истанбул-Тошкент TK0368)\nКетиш: 11.07.2026\n02:30\n(Тошкент-\nИстанбул TK371)\n Бизнес\n40,111,000",
+        davlati: "БУЮК БРИТАНИЯ",
+        toshkent: "Movenpick hotel\nvip",
+        samarqand: "«Hadith SAG»             меҳмонхонаси                          421",
+        termiz: "—",
+        sabab: "Malibu\n01 S 700 SK\n30 Н 007DB",
+    },
+    {
+        rasm: "../images/image44.png",
+        mehmon: "Аҳмад ад-Дубаён \nБуюк Британия Ислом маданият маркази Бош директори",
+        bilet: "Келиш: 06.07.2026 04:50\n(Лондон-Тошкент HY204)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул TK373)\n17,030,000",
+        davlati: "БУЮК БРИТАНИЯ",
+        toshkent: "Movenpick hotel",
+        samarqand: "SILK WAY \n127",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image117.png",
+        mehmon: "Аҳмад Маҳфуз \nПрофессор",
+        bilet: "Келиш: 06.07.2026 04:50\n(Лондон-Тошкент HY204)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул TK373)\n14,945,000",
+        davlati: "БУЮК БРИТАНИЯ",
+        toshkent: "Movenpick hotel",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image103.png",
+        mehmon: "Муҳаммад Акрам Надавий \nКембриж Мусулмон коллежи профессори",
+        bilet: "Келиш: 06.07.2026 04:50\n(Лондон-Тошкент HY204)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул TK373)\n17,030,000 + ПЕРЕБРОНЬ 3,215,000",
+        davlati: "БУЮК БРИТАНИЯ",
+        toshkent: "Movenpick hotel",
+        samarqand: "SILK WAY \n211",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image257.png",
+        mehmon: "Афифий ал-Акитий\nОксфорд ислом тадқиқотлари маркази доктори",
+        bilet: "Келиш: 06.07.2026 04:50\n(Лондон-Тошкент HY204)\nКетиш: 11.07.2026\n02:30\n(Тошкент-Истанбул TK0371)\n16,050,000\nЭКОНОМ",
+        davlati: "БУЮК БРИТАНИЯ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n201",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image11.png",
+        mehmon: "Сальма Абдульазиз \nМодератор CNN",
+        bilet: "Келиш: 06.07.2026 22:30\nЛондон-Стамбул-Ташкент\n(ТК362)\nКетиш: 08.07.2026\n23:50\n(Ташкент-Истанбул\nТК363)",
+        davlati: "БУЮК БРИТАНИЯ",
+        toshkent: "(Проживают в Hilton за свой счет)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image166.png",
+        mehmon: "Элли Маршал\nКоординатор по международным вопросам CNN",
+        bilet: "Келиш: 06.07.2026 22:30\nЛондон-Стамбул-Ташкент\n(ТК362)\nКетиш: 08.07.2026\n23:50\n(Ташкент-Истанбул\nТК363)",
+        davlati: "БУЮК БРИТАНИЯ",
+        toshkent: "(Проживают в Hilton за свой счет)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image118.png",
+        mehmon: "Абдуссамад Ал-Язидий\nГермания Мусулмонлари Олий кенгаши раиси, Мулоқот ва тушуниш институти вице-президенти",
+        bilet: "Келиш: 06.07.2026 07:55\n(Анкара-Тошкент TK368)\nКетиш:10.07.2026\n06:00\n(Тошкент-Истанбул TK365)\n \nEKONOM\n28,450,000",
+        davlati: "ГЕРМАНИЯ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image28.png",
+        mehmon: "Кетлин Гёбель \n“Cultur Corporation” жамияти директори",
+        bilet: "Келиш: 06.07.2026 22:30\n(Берлин-Истанбул-\nТошкент ТК362)\nКетиш:12.07.2026\n06:05\n(Тошкент-\nИстанбул TK365\n \nЭконом\n21 271 000",
+        davlati: "ГЕРМАНИЯ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image34.png",
+        mehmon: "Аҳмад Бенсағир \nЛагуат шаҳридаги Ислом илмлари ва цивилизациясини тадқиқ қилиш маркази директори",
+        bilet: "Келиш: 06.07.2026 07:55\n(Истанбул-Тошкент TK368)\nКетиш:12.07.2026\n02:30\n(Тошкент-\nИстанбул TK371)\n \nEKONOM\n12,569,000",
+        davlati: "ЖАЗОИР",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "Reikartz \n2011",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image137.png",
+        mehmon: "Али Ғрибий\nЛагуат шаҳридаги Ислом илмлари ва цивилизациясини тадқиқ қилиш маркази директори ўринбосари",
+        bilet: "Келиш: 06.07.2026 07:55\n(Истанбул-Тошкент TK368)\nКетиш:12.07.2026\n02:30\n(Тошкент-\nИстанбул TK371)\n \n ЭКОНОМ\n12,569,000\nEKONOM\n-",
+        davlati: "ЖАЗОИР",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "Reikartz \n2012",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image19.png",
+        mehmon: "Межудий Мессауд \nБатна университети тадқиқотчи-мутахассиси",
+        bilet: "Келиш: 06.07.2026 07:55\n(Истанбул-Ташкент TK368)\nКетиш:15.07.2026\n02:30\n(Тошкент-Истанбул TK371)\n \n \n ЭКОНОМ\n12,602,000",
+        davlati: "ЖАЗОИР",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "SILK WAY \n204",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image150.png",
+        mehmon: "Халифа Гайд \nВнештатный журналист алжирской газеты El Khabar",
+        bilet: "Келиш: 06.07.2026 07:55\n(Истанбул-Тошкент TK368)\nКетиш:11.07.2026\n05:35\n(Самарқанд-\nИстанбул TK37\n \n \n ЭКОНОМ\n28,400,000",
+        davlati: "ЖАЗОИР",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n205",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image8.png",
+        mehmon: "Амир Шокир Абдуллоҳ\nал-Жанобий \nИроқ Республикаси Сунний вақф девони раиси \n\nVIP",
+        bilet: "Келиш: 06.07.2026 13:55\n(Бағдод -Истанбул-Тошкент TK366)\nКетиш:10.07.2026\n23:50\n(Тошкент -Истанбул TK363)\n \n \nБИЗНЕС\n38,865,000",
+        davlati: "ИРОҚ",
+        toshkent: "Hilton Tashkent City\n0817",
+        samarqand: "«Hadith SAG»    меҳмонхонаси\n321",
+        termiz: "—",
+        sabab: "Malibu:\n 01 O714 VB\n30 S 007 AB",
+    },
+    {
+        rasm: "../images/image82.png",
+        mehmon: "Муоз Авад Халаф Солиҳ ал-Жабурий \nСафий ар-Раҳмон жоме масжидида имом-хатиб",
+        bilet: "Келиш: 06.07.2026 13:55\n(Бағдод -Истанбул-Тошкент TK366)\nКетиш:10.07.2026\n23:50\n(Тошкент -Истанбул TK363)\n \n \nЭКОНОМ\n23,180,000",
+        davlati: "ИРОҚ",
+        toshkent: "Inspira hotel\n(st)\n515",
+        samarqand: "SILK WAY \n206",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image81.png",
+        mehmon: "Аҳмад Жасим Зубайди \nЎзбекистон давлат жаҳон тиллари университети араб таржимаси кафедраси катта ўқитувчиси",
+        bilet: "Тошкентда\n(билет керак эмас)",
+        davlati: "ИРОҚ",
+        toshkent: "—",
+        samarqand: "SILK WAY \n208",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image13.png",
+        mehmon: "Фаҳмий Аҳмад Абдурраҳмон Аҳмад ал-Қаззоз \nИроқ Олий фатво кенгаши аъзоси ва котиби",
+        bilet: "Келиш: 06.07.2026 13:55\n(Бағдод -Истанбул-Тошкент TK366)\nКетиш:10.07.2026\n23:50\n(Тошкент -Истанбул TK363)\n \n \nЭКОНОМ\n23,180,000",
+        davlati: "ИРОҚ",
+        toshkent: "Inspira hotel\n(st)\n407",
+        samarqand: "SILK WAY \n212",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image218.png",
+        mehmon: "Маҳа Абдулазиз Абдулғаний ал-Ҳаббар \nИроқдаги Имом Аъзам университети профессори",
+        bilet: "Келиш: 06.07.2026 13:55\n(Бағдод -Истанбул-Тошкент TK366)\nКетиш:10.07.2026\n23:50\n(Тошкент -Истанбул TK363)\n \n \nЭКОНОМ\n23,180,000",
+        davlati: "ИРОҚ",
+        toshkent: "Inspira hotel\n(st)\n407",
+        samarqand: "SILK WAY \n213",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image27.png",
+        mehmon: "Норулдин Муҳаммад Ҳамид \nАмир Шокирнинг ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 13:55\n(Бағдод -Истанбул-Тошкент TK366)\nКетиш:10.07.2026\n23:50\n(Тошкент -Истанбул TK363\n\nЭКОНОМ\n23,180,000",
+        davlati: "ИРОҚ",
+        toshkent: "Hilton Tashkent City\n(St.)\n1416",
+        samarqand: "SILK WAY \n215",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image145.png",
+        mehmon: "Абдулвадуд Шакир Абд \nАмир Шокирнинг ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 13:55\n(Бағдод -Истанбул-Тошкент TK366)\nКетиш:10.07.2026\n23:50\n(Тошкент -Истанбул TK363\n\nЭКОНОМ",
+        davlati: "ИРОҚ",
+        toshkent: "Hilton Tashkent City\n(St.)\n0916",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image237.png",
+        mehmon: "Аҳмад Абд Аббос Жумайли\nАмир Шокирнинг ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 13:55\n(Бағдод -Истанбул-Тошкент TK366)\nКетиш:10.07.2026\n23:50\n(Тошкент -Истанбул TK363\n\nЭКОНОМ",
+        davlati: "ИРОҚ",
+        toshkent: "Hilton Tashkent City\n(St.)",
+        samarqand: "SILK WAY \n214",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image240.png",
+        mehmon: "Иброҳим ал-Ҳасанот \nИордания Бош муфтийси \n\nVIP",
+        bilet: "Келиш: 06.07.2026 13:55\n(Амман – Истанбул – Тошкент TK366)\n \nКетиш:12.07.2026\n06:50\n(Тошкент – Амман Airport)\n -Истанбул TK363\n\nБИЗНЕС\n41,624,000",
+        davlati: "ИОРДАНИЯ",
+        toshkent: "Hilton Tashkent City",
+        samarqand: "—",
+        termiz: "Reikartz \n5002",
+        sabab: "Mercedes Benz 222 \n01 804 PPP\n30 S 222 WA",
+    },
+    {
+        rasm: "../images/image161.png",
+        mehmon: "Нидал Иброҳим \nМаданият вазири ўринбосари \nVIP",
+        bilet: "Келиш: 06.07.2026 13:55\n(Амман – Истанбул – Тошкент TK366)\n11.07.2026\n15:15\n(Тошкент-Истанбул TK367)\n\nБИЗНЕС\n42,595,000",
+        davlati: "ИОРДАНИЯ",
+        toshkent: "Hilton Tashkent City\n0507",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n412",
+        termiz: "—",
+        sabab: "Malibu: \n01 J 201 DB\n30 Z 007C",
+    },
+    {
+        rasm: "../images/image26.png",
+        mehmon: "Муҳаммад Амин Ғолия \nИброҳим ал-Ҳасанотнинг ҳамроҳи, Иордания Бош муфтийси котибият мудири",
+        bilet: "Келиш: 06.07.2026 13:55\n(Амман – Истанбул – Тошкент TK366)\n \nКетиш:12.07.2026\n06:50\n(Тошкент – Амман Airport)\n -Истанбул TK363\n\nЭКОНОМ\n17,197,000",
+        davlati: "ИОРДАНИЯ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image69.png",
+        mehmon: "Салоҳ Абулхож \nИордания халқаро ислом фанлари университети Ҳанафий мазҳаби факультети декани",
+        bilet: "Келиш: 05.07.2026 13:00\n(Шаржа-Тошкент)\nКетиш:12.07.2026\n14:20\n(Тошкент-Шаржа)\n\nЭКОНОМ\n-",
+        davlati: "ИОРДАНИЯ",
+        toshkent: "Sayidat hotel\n105-хона",
+        samarqand: "SILK WAY \n302",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image213.png",
+        mehmon: "Mohammad Khalifah Hamed Al Shboul \nИнформационное агентство Jordan News Agency (PETRA)",
+        bilet: "Келиш: 06.07.2026 22:30\n(Амман- Истанбул-Ташкент TK0362)\nКетиш:11.07.2026\n02:30\n(Тошкент – Истанбул TK371)\n \n\nЭКОНОМ\n17,000,000",
+        davlati: "ИОРДАНИЯ",
+        toshkent: "—",
+        samarqand: "SILK WAY \n217",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image112.png",
+        mehmon: "Waleed Altef Mohammad Al Habahbeh \nЖурналист газеты Al-Ghad Jordanian",
+        bilet: "Келиш: 06.07.2026 22:30\n(Амман- Истанбул-Ташкент TK0362)\nКетиш:11.07.2026\n02:30\n(Тошкент – Истанбул TK371)\n \n\n-",
+        davlati: "ИОРДАНИЯ",
+        toshkent: "—",
+        samarqand: "SILK WAY \n226",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image208.png",
+        mehmon: "Муҳаммад Зайтун \nМусулмонлар идораси кенгаши ижроия раҳбари\n\nVIP",
+        bilet: "Келиш: 06.07.2026 09:00\nОн в Ташкенте, надо его забрать с отеля\n(Мерикюр Шота Руставели)\n \nКетиш:11.07.2026\n21:10\n(Тошкент-\nГуанжоу)\n\nБИЗНЕС\n52,240,000 – ВОЗВРАТ СЮДА – 12,396,000 = 39,844,000",
+        davlati: "ИНДОНЕЗИЯ",
+        toshkent: "Sayidat hotel\n           301 хона",
+        samarqand: "—",
+        termiz: "Reikartz\n5004",
+        sabab: "Malibu 01V708QB",
+    },
+    {
+        rasm: "../images/image60.png",
+        mehmon: "Исрак Мира \nМуҳаммад Зайтуннинг ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 16:40\n(Жакарта-Куала-Лумпур-Тошкент HY554)\nКетиш:11.07.2026\n21:10\n(Тошкент-\nГуанжоу)\n\nЭКОНОМ\n22,215,000",
+        davlati: "ИНДОНЕЗИЯ",
+        toshkent: "Sayidat hotel\n304 хона (St.)",
+        samarqand: "—",
+        termiz: "Reikartz\n3005",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image206.png",
+        mehmon: "Форестя Сартика \nЗаместитель главного редактора Garuda TV",
+        bilet: "Келиш: 06.07.2026 21:50\nДжакарта-Куала-Ташкент OD751\nКетиш:10.07.2026\n23:10\n(Ташкент -Куала OD752)\n\nЭКОНОМ+БИЗНЕС\n18,588,000",
+        davlati: "ИНДОНЕЗИЯ",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image173.png",
+        mehmon: "Арё Брахмантё\nПродюсер международных новостей Garuda TV",
+        bilet: "Келиш: 06.07.2026 21:50\nДжакарта-Куала-Ташкент OD751\nКетиш:10.07.2026\n23:10\n(Ташкент -Куала OD752)\n\nЭКОНОМ\n15,588,000",
+        davlati: "ИНДОНЕЗИЯ",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image262.png",
+        mehmon: "Дикки Пратама \nОператор телеканала Garuda TV",
+        bilet: "Келиш: 06.07.2026 21:50\nДжакарта-Куала-Ташкент OD751\nКетиш:10.07.2026\n23:10\n(Ташкент -Куала OD752)\n\nЭКОНОМ\n15,588,000",
+        davlati: "ИНДОНЕЗИЯ",
+        toshkent: ")",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image76.png",
+        mehmon: "CEU Сан-Пабло Рикардо \nРуис де ла Серна университети Гуманитар фанлар ва коммуникация фанлари факультети вакили, жаҳон тарихи бўйича профессори",
+        bilet: "Келиш: 06.07.2026 08:00\n(Варшава-Тошкент LO191)\nКетиш:11.07.2026\n03:20\n(Тошкент-Доҳа qR378)\n\nЭКОНОМ\n14,810,000",
+        davlati: "ИСПАНИЯ",
+        toshkent: "Inspira hotel\n(st)\n416",
+        samarqand: "SILK WAY \n228",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image7.png",
+        mehmon: "Яҳё Паллавичини \nЕвропа мусулмон етакчилари кенгаши раиси",
+        bilet: "Келиш: 06.07.2026 01:00\n(Боку-Тошкент J2531)\nКетиш:11.07.2026\n04:05\n(Тошкент-Боку J2532)\n \n-",
+        davlati: "ИТАЛИЯ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "Reikartz \n2014",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image52.png",
+        mehmon: "Киара Ферреро\nДоктор Яҳё Паллавичини хамроҳи Паллавичини рафиқаси",
+        bilet: "Келиш: 06.07.2026 01:00\n(Боку-Тошкент J2531)\nКетиш:11.07.2026\n04:05\n(Тошкент-Боку J2532)\n \n               -",
+        davlati: "ИТАЛИЯ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "REikartz\n2014",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image250.png",
+        mehmon: "Абдулҳамид Муҳаммад Саид Элазабий \nСифат ва фаолиятни баҳолаш бошқармаси директори",
+        bilet: "Келиш: 06.07.2026 00:50\n(Триполи-Истанбул-Тошкент ТК 370)\nКетиш:12.07.2026\n23:50\n(Тошкент-\nИстанбул)\n \nЭКОНОМ\n24,992,000",
+        davlati: "ЛИВИЯ",
+        toshkent: "Sayidat hotel\n218 (st)",
+        samarqand: "SILK WAY \n229",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image29.png",
+        mehmon: "Муҳаммад Шаҳим Али Саид \nИслом ишлари вазири \n\nVIP",
+        bilet: "Келиш: 06.07.2026 17:10\n(Мале-Тошкент)\n \nКетиш:12.07.2026\n02:10\n(Тошкент-Мале)\n \n \nЭКОНОМ\n11,676,000",
+        davlati: "МАЛЬДИВ ОРОЛЛАРИ",
+        toshkent: "05.07.2026 - 08.07.2026\nSayidat hotel\n315",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n319",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01989PPP",
+    },
+    {
+        rasm: "../images/image4.png",
+        mehmon: "Али Аҳсан \nМуҳаммад Шаҳим Али Саиднинг ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 17:10\n(Мале-Тошкент)\n \nКетиш:12.07.2026\n02:10\n(Тошкент-Мале)\n \n \nЭКОНОМ\n11,676,000",
+        davlati: "МАЛЬДИВ ОРОЛЛАРИ",
+        toshkent: "05.07.2026 - 08.07.2026\nSayidat hotel\n302 (St.)",
+        samarqand: "SILK WAY \n230",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image114.png",
+        mehmon: "Зулкифли Ҳасан \nДин ишлари вазири \n\nVIP",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент HY554)\nКетиш:10.07.2026\n23:10\n(Тошкент- Куала-Лумпур OD752)\nБИЗНЕС+ЭКОНОМ\n26,992,000 + 18,166,000 АПГРЕЙД ПЕРЕБРОНЬ",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "Hilton l",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n206",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01417PPP",
+    },
+    {
+        rasm: "../images/image99.png",
+        mehmon: "Муҳаммад Асрий Зайнул Обидин\nМалайзия Исломни англаш институти директори",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент HY554)\nКетиш:10.07.2026\n23:10\n(Тошкент- Куала-Лумпур OD752)\n \nЭКОНОМ\n9,919,000",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n112",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image41.png",
+        mehmon: "Тан Сри Абдул Рашид бин Ҳуссаин \n“Табунг Ҳажи” жамғармаси раиси\n\nVIP",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент HY554)\nКетиш:12.07.2026\n 23:40\n(Тошкент- Куала-Лумпур HY553)\n \nБИЗНЕС\n32,179,000",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "Hilton l",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n210",
+        termiz: "—",
+        sabab: "Mercedez Benz 222\n 01 776PPP",
+    },
+    {
+        rasm: "../images/image132.png",
+        mehmon: "Муҳаммад Аъзам Муҳаммад Одил\nМалайзия Исломни англаш институти директори",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент HY554)\nКетиш:10.07.2026\n23:10\n(Тошкент- Куала-Лумпур OD752)\n \n \nЭКОНОМ\n9,919,000",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "SILK WAY \n114",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image55.png",
+        mehmon: "Изҳом Ҳакимий \nМалайзия Ислом цивилизацияси маркази илмий ходими",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент HY554)\nКетиш:12.07.2026\n23:40\n(Тошкент- Куала-Лумпур HY553)\n   \nЭКОНОМ\n11,250,000",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n232",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image242.png",
+        mehmon: "Шукрон бин Абдураҳмон\nМалайзия халқаро ислом университети профессори",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент HY554)\nКетиш:12.07.2026\n23:40\n(Тошкент- Куала-Лумпур HY553)\n \n   \nЭКОНОМ\n12,470,000",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "SILK WAY \n113",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image108.png",
+        mehmon: "Зарул Эффенди Разали\nБернама АА журналисти",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент HY554)\nКетиш:10.07.2026\n23:10\n(Тошкент- Куала-Лумпур OD752)\n   \nЭКОНОМ\n11,920,000",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "Movenpick hotel",
+        samarqand: "SILK WAY \n235",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image42.png",
+        mehmon: "Моҳд Изуван бин Моҳд Заки \nБернама ТВ оператори",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент HY554)\nКетиш:10.07.2026\n23:10\n(Тошкент- Куала-Лумпур OD752)\n   \nЭКОНОМ\n11,920,00",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "-\n(St.)",
+        samarqand: "SILK WAY \n236",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image106.png",
+        mehmon: "Тан Срининг турмуш ўртоғи\nТан Срининг ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент)\n(билетни ўзи олган HY554)\n12.07.2026\n \n23:40\n(Тошкент- Куала-Лумпур HY553)\n \n \n-",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "Hilton",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n210",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image17.png",
+        mehmon: "Муҳаммад Фаузан\nЗулкифли Ҳасаннинг ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 16:40\n(Куала-Лумпур-Тошкент HY554)\nКетиш:10.07.2026\n23:10\n(Тошкент- Куала-Лумпур OD752)\n   \nЭКОНОМ\n12,877,000 + 1,700,000 ПЕРЕБРОНЬ ОБРАТКИ",
+        davlati: "МАЛАЙЗИЯ",
+        toshkent: "Hilton st",
+        samarqand: "SILK WAY \n237",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image239.png",
+        mehmon: "Хиёлий Абдулмажид \n“Ал-Хизона ал-Ҳасания” кадрлар хизмати раҳбари",
+        bilet: "Келиш: 06.07.2026 07:55\n(Касабланка-Истанбул-Тошкент\nTK368)\nКетиш:11.07.2026\n06:05\n(Тошкент- Истанбул TK365)\n   \nЭКОНОМ\n14,256,000",
+        davlati: "МАРОКАШ ҚИРОЛЛИГИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n239",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image159.png",
+        mehmon: "Муҳаммад Носирий \n“Дор ал-Ҳадис ал-Ҳасания” профессори",
+        bilet: "Келиш: 06.07.2026 07:55\n(Касабланка-Истанбул-Тошкент\nTK368)\n11.07.2026\n06:05\n(Тошкент- Истанбул TK365)\n \n \n-",
+        davlati: "МАРОКАШ ҚИРОЛЛИГИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n240",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image32.png",
+        mehmon: "Саҳли Муҳаммад \nУжда шаҳридаги Ҳасан I университети профессори",
+        bilet: "Келиш: 06.07.2026 07:55\n(Касабланка-Истанбул-Тошкент\nTK368)\nКетиш:11.07.2026\n06:05\n(Тошкент- Истанбул TK365)\n \n \nЭКОНОМ\n14,970,000",
+        davlati: "МАРОКАШ ҚИРОЛЛИГИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n304",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image225.png",
+        mehmon: "Ҳамид Лаҳмар \nОлий таълим профессори",
+        bilet: "Келиш: 06.07.2026 07:55\n(Касабланка-Истанбул-Тошкент\nTK368)\nКетиш:11.07.2026\n06:05\n(Тошкент- Истанбул TK365)\n \nЭКОНОМ\n14,256,000",
+        davlati: "МАРОКАШ ҚИРОЛЛИГИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n305",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image35.png",
+        mehmon: "Эл Ҳмиди Нуриддин \nТадқиқотчи",
+        bilet: "Келиш: 06.07.2026 07:55\n(Касабланка-Истанбул-Тошкент\nTK368)\nКетиш:11.07.2026\n06:05\n(Тошкент- Истанбул TK365)\n \nЭКОНОМ\n14,256,000",
+        davlati: "МАРОКАШ ҚИРОЛЛИГИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n306",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image251.png",
+        mehmon: "Дрисс Харчафи\nПрофессор",
+        bilet: "Келиш: 06.07.2026 07:55\n(Касабланка-Истанбул-Тошкент\nTK368)\nКетиш:11.07.2026\n06:05\n(Тошкент- Истанбул TK365)\n \nЭКОНОМ\n14,256,000",
+        davlati: "МАРОКАШ ҚИРОЛЛИГИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n307",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image51.png",
+        mehmon: "Бухта Зефзуфий \nПрофессор",
+        bilet: "Келиш: 06.07.2026 07:55\n(Касабланка-Истанбул-Тошкент\nTK368)\nКетиш:11.07.2026\n06:05\n(Тошкент- Истанбул TK365)\n \nЭКОНОМ\n14,958,000",
+        davlati: "МАРОКАШ ҚИРОЛЛИГИ",
+        toshkent: "Movenpick hotel",
+        samarqand: "SILK WAY \n308",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image255.png",
+        mehmon: "Усома Азҳарий\nМиср Вақф ишлари вазири \n\nVIP",
+        bilet: "Келиш: 08.07.2026 07:55\n(Қоҳира-Истанбул-Тошкент\nTK368)\nКетиш:12.07.2026\n03:15\n(Тошкент- Истанбул TK-363)\n \nБИЗНЕС\n34,049,000\nПЕРЕБРОНЬ-1 3,437,000 + ПЕРЕБРОНЬ-2 5,944,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "Termiz Palace",
+        sabab: "У него планы поменялись.",
+    },
+    {
+        rasm: "../images/image136.png",
+        mehmon: "Абдулазиз Консова \nОлий таълим вазири \n\nVIP",
+        bilet: "Келиш: 07.07.2026 07:55\nКаир-Истанбул-Ташкент TK368\nКетиш:09.07.2026\n02:30\nТашкент-Истанбул-Париж TK371\n \nБИЗНЕС\n52,017,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01809PPP",
+    },
+    {
+        rasm: "../images/image157.png",
+        mehmon: "Муҳаммад Айман Ошур \nСобиқ олий таълим вазири",
+        bilet: "Келиш: 07.07.2026 1:20\n(Қоҳира-Доҳа-Тошкент qR377)\nКетиш:11.07.2026\n03:20\n(Тошкент-Доҳа qR378)\n \nБИЗНЕС\n42,298,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "-",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n309",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image105.png",
+        mehmon: "Шайх Муҳаммад Дувайний \nАл-Азҳар мажмуаси раҳбаринининг маслаҳатчиси\n\nVIP",
+        bilet: "Келиш: 06.07.2026 Миср\n07:55\n(Қоҳира-Истанбул-Тошкент\nTK368)\nКетиш:11.07.2026\n02:30\n(Тошкент- Истанбул TK371)\n -\n \nБИЗНЕС",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Hilton l",
+        samarqand: "«Hadith SAG» меҳмонхонаси \n203",
+        termiz: "—",
+        sabab: "Malibu 01W975YB",
+    },
+    {
+        rasm: "../images/image236.png",
+        mehmon: "Шайх Назир Муҳаммад Айяд\nМиср диёри Бош муфтийси \n\nVIP",
+        bilet: "Келиш: 07.07.2026 Миср\n1:20\n(Қоҳира — Доҳа — Тошкент qR377)\nКетиш:11.07.2026\n03:20\n(Тошкент-Доҳа qR378)\n   БИЗНЕС\n61,274,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "(st)",
+        samarqand: "«Hadith SAG» меҳмонхонаси \n205",
+        termiz: "—",
+        sabab: "Mercedes Benz 222 01440PPP",
+    },
+    {
+        rasm: "../images/image227.png",
+        mehmon: "Иброҳим Нажм\nМиср Бош муфтийсининг катта маслаҳатчиси, Жаҳон фатво идоралари кенгашининг Бош котиби  \n\nVIP",
+        bilet: "-",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Sayidat hotel\n215-хона",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Malibu 01O771KA",
+    },
+    {
+        rasm: "../images/image85.png",
+        mehmon: "Элчи Абдураҳмон Мусо \nАл-Азҳар  мажмуаси раҳбарининг ташқи алоқалар ва чет эллик талабалар масалалари бўйича маслаҳатчиси",
+        bilet: "Келиш: 06.07.2026 07:55\n(Қоҳира-Истанбул-Тошкент TK368)\nКетиш:11.07.2026\n02:30\n(Тошкент-\nИстанбул TK371)\n \n  -",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "«Hadith SAG» меҳмонхонаси \n311",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image54.png",
+        mehmon: "Абдул Ати Шарқовий \n“Илм” меросни тиклаш ва рақамли хизматлар муассасаси раҳбари",
+        bilet: "Келиш: 06.07.2026 13:55\n(Қоҳира-Истанбул-Тошкент TK366)\nКетиш:11.07.2026\n23:50\n(Тошкент-\nИстанбул\nTK363)\n  -",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Movenpick hotel-",
+        samarqand: "SILK WAY \n104",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image148.png",
+        mehmon: "Муҳаммад Ҳассан \n“Салам” маркази директори",
+        bilet: "Келиш: 06.07.2026 07:55\nҚоҳира-Истанбул-Тошкент TK368\nКетиш:11.07.2026\n02:30\n(Тошкент- Истан)\nЭКОНОМ\n15,972,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "SILK WAY \n103",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image167.png",
+        mehmon: "Муҳаммад Мишъал \nИмом Ашъарий маркази директор ўринбосари",
+        bilet: "Келиш: 06.07.2026 07:55\n(Қоҳира-Истанбул-Тошкент\nTK368)\nКетиш:11.07.2026\n23:50\n(Тошкент- Истанбул TK3363)\n \n-",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Hilton",
+        samarqand: "SILK WAY \n105",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image2.png",
+        mehmon: "Муҳаммад Элметвалли Али Фадел \nАл-Азҳар университети профессори",
+        bilet: "Келиш: 06.07.2026 07:55\n(Қоҳира-Истанбул-Тошкент\nTK368)\nКетиш:11.07.2026\n02:30\n(Тошкент- Истанбул TK371)\nЭКОНОМ\n15,972,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Movenpick hotel",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image163.png",
+        mehmon: "Аҳмад Муҳаммад Аттия Абдулҳодий Муборак \nИскандария кутубхонаси Қўлёзмалар маркази катта илмий ходими",
+        bilet: "Келиш: 06.07.2026 13:55\n(Қоҳира-Истанбул-Тошкент TK366)\nКетиш:11.07.2026\n23:50\n(Тошкент-\nИстанбул TK363)\nЭКОНОМ\n13,457,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Movenpick hotel",
+        samarqand: "SILK WAY \n312",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image63.png",
+        mehmon: "Басма Имом Башир Марзуқ Аҳмад \nИскандария университети",
+        bilet: "Келиш: 06.07.2026 13:55\n(Қоҳира-Истанбул-Тошкент TK366)\nКетиш:11.07.2026\n23:50\n(Тошкент-\nИстанбул TK363)\nЭКОНОМ\n13,457,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n313",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image233.png",
+        mehmon: "Хассан Саҳл\nМиср Миллий китоблар ва архивлар уйи  Туркий халқлар бўйича қўлёзмашунос олим",
+        bilet: "Келиш: 06.07.2026 13:55\n(Қоҳира-Истанбул-Тошкент TK366)\nКетиш:11.07.2026\n15:15\n(Тошкент -Истанбул TK367)\n \nЭКОНОМ\n11,840,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image151.png",
+        mehmon: "Карим Камол Хилал \nИслом цивилизацияси ва археология соҳасида доктор. Ўзбекистон тарихи бўйича олим",
+        bilet: "Келиш: 06.07.2026 13:55\n(Қоҳира-Истанбул-Тошкент TK366)\nКетиш:11.07.2026\n15:15\nТошкент -Истанбул TK367)\n \nЭКОНОМ\n11,840,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n314",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image229.png",
+        mehmon: "Аҳмад Абдуҳ Тарабек \n\nЎзбекистон маданияти ва тарихи бўйича олим, ёзувчи (“Мисрдаги Ўзбеклар тарихи”, “Шавкат Мирзиёев – Янги Ўзбекистон бунёдкори” китоблари муаллифи)",
+        bilet: "Келиш: 06.07.2026 13:55\n(Қоҳира-Истанбул-Тошкент TK366)\nКетиш:11.07.2026\n15:15\n(Тошкент -Истанбул TK367)\n\n-",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n315",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image129.png",
+        mehmon: "Аббуд Мустафо Аббуд \n“Sarh Publishing and Distribution House” нашриёти директори",
+        bilet: "Келиш: 06.07.2026 07:55\nҚоҳира-Истанбул-\nТошкент TK368\n \nКетиш:11.07.2026\n02:30\n(Тошкент- Истанбул TK371)\n \n-",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "SILK WAY \n317",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image22.png",
+        mehmon: "Ghada Mahmoud Samir Mohamed Elsharkawy \nГазета «Аль-Ахрам»",
+        bilet: "Келиш: 06.07.2026 07:55\n(Каир-Стамбул-Ташкент\nTK368)\nКетиш:11.07.2026\n09:35\n(Ташкент- Истанбул\nTK369)\n \nЭКОНОМ\n11,918,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "SILK WAY \n318",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image200.png",
+        mehmon: "Mohamed Talaat Mohamed Salama Akel \nГазета «Al Gomhuria»",
+        bilet: "Келиш: 05.07.2026 14:00\n(Каир-Ташкент)\nКетиш:11.07.2026\n14:40\n(Ташкент-Каир)\n \nЭКОНОМ\n11,842,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "-\n(St.)",
+        samarqand: "SILK WAY \n319",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image139.png",
+        mehmon: "Shohrat Salaheldin Mahmoud Mahmoud Aref \nИнформационное агентство MENA",
+        bilet: "Келиш: 07.07.2026 07:55\nКаир-Стамбул-Ташкент TK368\nКетиш:11.07.2026\n23:50\n(Ташкент-Истанбул TK363)\n \n \nЭКОНОМ\n11,616,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Inspira hotel\n(st)\n422",
+        samarqand: "SILK WAY \n320",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image165.png",
+        mehmon: "Азҳарий ҳамроҳи",
+        bilet: "Келиш: 08.07.2026 \n07:55\nХасс(Қоҳира-Истанбул-Тошкент\nTK368)\nКетиш:12.07.2026\n03:15\n(Тошкент- Истанбул TK-363)\n \n\n-",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "HILTON",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image209.png",
+        mehmon: "Азҳарий ҳамроҳи",
+        bilet: "Келиш: 08.07.2026 \n07:55\nХасс(Қоҳира-Истанбул-Тошкент\nTK368)\nКетиш:12.07.2026\n03:15\n(Тошкент- Истанбул TK-363)\n -",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "HILTON",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image109.png",
+        mehmon: "Назир Айяд ҳамроҳи",
+        bilet: "Келиш: 07.07.2026 \n1:20\n(Қоҳира — Доҳа — Тошкент qR377)\nКетиш:11.07.2026\n03:20\n(Тошкент-Доҳа qR378))\n -",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Movenpick hotel (st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image72.png",
+        mehmon: "Айман Фарид Ҳамза \nКонсова ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n07:55\nҚоҳира-Истанбул-\nТошкент TK368\nКетиш:11.07.2026\n02:30\n(Тошкент-Истанбул TK0371)\nЭКОНОМ\n17,890,000 + 2,921,000",
+        davlati: "МИСР АРАБ РЕСПУБЛИКАСИ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image222.png",
+        mehmon: "Юсуф Мутохир бин Насир \nIconic Open университети тадқиқотчиси",
+        bilet: "-\nЭКОНОМ\n57,994,000",
+        davlati: "НИГЕРИЯ",
+        toshkent: "Sayidat hotel\n206-хона",
+        samarqand: "SILK WAY \n323",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image9.png",
+        mehmon: "с\nОлий Муфтий, Кавказ мусулмонлари идораси раиси, Шайхулислом \nVIP \n(12 нафар ҳамроҳи)",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nVIP",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n(13 киши)\n\nСамарқанд\nHadith - 2 киши\nSilk Way - 11 киши\n\nБухоро\nUmar Khayyam\n(13 киши)\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n208",
+        termiz: "—",
+        sabab: "Тошкент\nMercedes Benz 223 01841PPP\nSprinter 01980РРР\n\nСамарқанд\nMercedes Benz 223 01C223CC\nSprinter 30557PBA\n\nБухоро\nMercedes Benz 223 01C223CC\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image36.png",
+        mehmon: "Рамин Мамедов\nДиний ташкилотлар билан қўмитаси раиси  \n\nVIP",
+        bilet: "Келиш: 06.07.2026 \n01:00\n(Баку-Ташкент\nJ2 531)\nКетиш:08.07.2026\n07:40\n(Тошкент-Истанбул)\n  -",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Hilton l",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01834PPP",
+    },
+    {
+        rasm: "../images/image191.png",
+        mehmon: "Ақтоти Раимқулова \nТуркий маданият ва мерос жамғармаси президенти\n \nVIP",
+        bilet: "Келиш: 06.07.2026 \n01:00\n(Баку-Ташкент\nJ2 531)\nКетиш:09.07.2026\n21:35\n(Ташкент-Баку\nJ2 531)\n \n  -",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Courtyard by Marriott Tashkent hotel\n(Ўз ҳисобидан)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Malibu 10R110XA",
+    },
+    {
+        rasm: "../images/image120.png",
+        mehmon: "Гулузаде Тугрул \nРепортёр телеканала ICTIMAI TV",
+        bilet: "Келиш: 06.07.2026 \n17:15\n(Баку-Тошкент C6252)\nКетиш:11.07.2026\n03:30\n(Баку-Тошкент)\n \n \nЭКОНОМ\n6,874,000",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "-\n(St.)",
+        samarqand: "SILK WAY \n326",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image197.png",
+        mehmon: "Наврузов Замин \nОператор телеканала ICTIMAI TV",
+        bilet: "Келиш: 06.07.2026 \n17:15\n(Баку-Тошкент C6252)\nКетиш:11.07.2026\n03:30\n(Баку-Тошкент)\n \n \nЭКОНОМ\n6,874,000",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "-\n(St.)",
+        samarqand: "SILK WAY \n327",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image186.png",
+        mehmon: "Салмон Мусаев\nКавказ мусулмонлари идораси раиси биринчи ўринбосари\nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nVIP",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\n\nSilk Way \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n328",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image212.png",
+        mehmon: "Гудрат Гасангулиев \nМиллий мажлис депутати \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nVIP",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nSilk Way \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n329",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image185.png",
+        mehmon: "Рашод Алиёрли \nКМИ раиси ўринбосари \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nVIP",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nSilk Way \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image77.png",
+        mehmon: "Гюндуз Бобоев \nРаис ёрдамчиси \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nBusiness",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nHadith \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n331",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image162.png",
+        mehmon: "Агарашид Толибов \nКМИ қозилар кенгаши аъзоси \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nBusiness",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nHadith \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n343",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image224.png",
+        mehmon: "Руфат Ҳасанов \nКМИ протокол бўлими бошлиғи \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nBusiness",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nHadith \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n335",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image153.png",
+        mehmon: "Рагима Додошова\nКМИ матбуот хизмати раҳбари  \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nBusiness",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nHadith \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n336",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image261.png",
+        mehmon: "Гамид Богиров \nКМИ фото-видео мухбири \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nBusiness",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nHadith \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n337",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image66.png",
+        mehmon: "Ислом Бобоев \nШайхулислом қўриқлаш хизмати \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nBusiness",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nHadith \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n338",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image174.png",
+        mehmon: "Жавоншир Пошшозода \nМиллий Мажлис депутати \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nVIP",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nSilk Way \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n339",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image228.png",
+        mehmon: "Бахтияр Нажафов \nДин ишлари бўйича давлат қўмитаси раиси ўринбосари\nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nVIP",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nSilk Way \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n340",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image143.png",
+        mehmon: "Камрон Гасимов\n\"REAL TV\" телеканали мухбири  \nО.Пошозода ҳамроҳи",
+        bilet: "Келиш: 06.07.2026\nКетиш: 11.06.2026\n(ўз ҳисобидан махсус авиарейс)\n\n09.06.2026\nСамарқанд-Тошкент\nАфросиёб-767ФА\nBusiness",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Тошкент\nHyatt Regency\n\nСамарқанд\nHadith \n\nБухоро\nUmar Khayyam\n\nSahid Zarafshon 10.06.2026 й.да бекор қилинди",
+        samarqand: "SILK WAY \n341",
+        termiz: "—",
+        sabab: "Тошкент\nSprinter 01980РРР\n\nСамарқанд\nSprinter 30557PBA\n\nБухоро\nSprinter 80С017CB",
+    },
+    {
+        rasm: "../images/image156.png",
+        mehmon: "Анар Раҳимов \nМамедов ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n01:00\n(Баку-Ташкент\nJ2 531)\nКетиш: 08.07.2026\n02:20\n(Тошкент-Боку)\nЭКОНОМ\n7,273,000 + ПЕРЕБРОНЬ 1,815,000",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Movenpick hotel (st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image211.png",
+        mehmon: "Нури аксу\nАқтотининг ҳамроҳи\nТуркий маданият ва мерос жамғармаси лойиҳа координатори",
+        bilet: "Келиш: 07.07.2026 \n   07:55\n(Истанбул-Тошкент TK-368)\n \nКетиш:11.07.2026\n05:35\n(Самарканд-\nИстанбул TK373)\nЭКОНОМ\n10,941,000 (ПЕРЕБРОНЬ ВКЛЮЧЕН)",
+        davlati: "ОЗАРБАЙЖОН",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "SILK WAY \n342",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image62.png",
+        mehmon: "Аврангзеб Хон Хичи \nМиллий мерос ва маданят вазири \n\nVIP",
+        bilet: "Келиш: 07.07.2026 1:20\n(Исломобод-Доҳа-Тошкент qR377)\nКетиш:11.07.2026\n08:50\n(Тошкент-Исломобод HY465)\nБИЗНЕС\n59,973,000",
+        davlati: "ПОКИСТОН",
+        toshkent: "-",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n211",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01303PPP",
+    },
+    {
+        rasm: "../images/image181.png",
+        mehmon: "Муҳаммад Аббос Хон \n“Daily Ittehad” газетасининг Ўзбекистондаги муҳбири, ёзувчи",
+        bilet: "сам себе купил билет",
+        davlati: "ПОКИСТОН",
+        toshkent: "-",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image67.png",
+        mehmon: "Qamar Danish\nОператор государственного телеканала, Discover Pakistan TV",
+        bilet: "Келиш: 06.07.2026 13:00\n(Лахор\nШарджа\nТашкент G9273)\nКетиш:11.07.2026\n03:20\n(Ташкент\nДоха qR378)\n ЭКОНОМ\n13,310,000\n\nЭКОНОМ\n13,310,000",
+        davlati: "ПОКИСТОН",
+        toshkent: "(St.)",
+        samarqand: "IMOM BUHORIY HOTEL\n111",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image90.png",
+        mehmon: "Butt Zeeshan Akhtar \nЖурналист государственного телеканала, Discover Pakistan TV",
+        bilet: "Келиш: 06.07.2026 13:00\n(Лахор Шарджа\nТашкент G9273)\nКетиш:11.07.2026\n03:20\n(Ташкент\nДоха qR378)\n ЭКОНОМ\n13,310,000",
+        davlati: "ПОКИСТОН",
+        toshkent: "(St.)",
+        samarqand: "IMOM BUHORIY HOTEL\n113",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image3.png",
+        mehmon: "Афшан Малик \nТаниқли журналист ва ёзувчи",
+        bilet: "Келиш: 06.07.2026 22:30\n(Исломобод-Истанбул-ТошкентTK0362)\nКетиш:11.07.2026\n08:50(Тошкент-Исломобод HY-465)\nЭКОНОМ\n19,970,000",
+        davlati: "ПОКИСТОН",
+        toshkent: "-",
+        samarqand: "IMOM BUHORIY HOTEL\n115",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image119.png",
+        mehmon: "Вазир ҳамроҳи",
+        bilet: "Келиш: 07.07.2026 1:20\n(Исломобод-Доҳа-Тошкент qR377)\nКетиш:11.07.2026\n08:50\n(Тошкент-Исломобод HY465)\n                -",
+        davlati: "ПОКИСТОН",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image146.png",
+        mehmon: "Талгат Сафо Тажуддин \nРоссия Мусулмонлари марказий диний идораси раиси, олий муфтий\n\nVIP",
+        bilet: "келиш: 06.07.2026\nUT-833\nкетиш: 10.07.2026\nA4-4040",
+        davlati: "РОССИЯ",
+        toshkent: "Тошкент\nHilton\n\nСамарқанд\nHadith",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n404",
+        termiz: "—",
+        sabab: "Mercedes Benz 222 01877PPP",
+    },
+    {
+        rasm: "../images/image244.png",
+        mehmon: "Фарит Мухаметшин \nТатаристон Давлат Кенгашининг Фахрий раиси \n\nVIP",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Москва-Тошкент HY604)\nКетиш:11.07.2026\n17:45\n(Тошкент- Москва HY613)\nБИЗНЕС\n24,006,000",
+        davlati: "РОССИЯ",
+        toshkent: "Hilton l",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n406",
+        termiz: "—",
+        sabab: "Mercedes Benz 222 01486PPP",
+    },
+    {
+        rasm: "../images/image80.png",
+        mehmon: "ЗР Ислам Амирович \nРоссия мусулмонлари диний идораси раисининг биринчи ўринбосари ёрдамчиси",
+        bilet: "Келиш: 06.07.2026 \n03:30\n(Москва-Тошкент)\nКетиш:11.07.2026\n08:05\n(Тошкент-Москва)\n \nЭКОНОМ\n6,630,000",
+        davlati: "РОССИЯ",
+        toshkent: "Inspira hotel\n(st)м\n527",
+        samarqand: "IMOM BUHORIY HOTEL\n11",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image246.png",
+        mehmon: "Фарит Мухаметшиннинг ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Москва-Тошкент HY604)\nКетиш:11.07.2026\n17:45\n(Тошкент- Москва HY613)\n\nЭКОНОМ",
+        davlati: "РОССИЯ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image79.png",
+        mehmon: "Дамир Ваисович Мухетдинов \nРоссия мусулмонлари диний идораси раисининг биринчи ўринбосари, Москва ислом институти ректори",
+        bilet: "Келиш: 07.07.2026 \n17:30\n(Дубай-\nТашкент HY334)\nКетиш:11.07\n07:45\n(Ташкент-Дубай HY333)\nБИЗНЕС\n32,321,000",
+        davlati: "РОССИЯ",
+        toshkent: "Inspira\n436",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image170.png",
+        mehmon: "Др. Сайфул Асрий\nБулғор ислом академияси ўқитувчиси",
+        bilet: "05.07.2026 й.\n16.07.2026 й.",
+        davlati: "РОССИЯ",
+        toshkent: "Тошкнт\nSayidat hotel\n102-хона \n\nСамарқанд\nSilk Way",
+        samarqand: "SILK WAY \n116",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image104.png",
+        mehmon: "Халикова-Брундукова Стелла Миндаровна\nРоссия Федерацияси мусулмонларининг маънавий бошқарувида аёллар ҳамкорлиги уюшмасининг ҳаммуассиси",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Дубай-\nТашкент HY334)\nКетиш:11.07\n07:45\n(Ташкент-Дубай HY333)\nМОСКВА-ТАШКЕНТ 4,714,000\nСАМАРКАНД-МОСКВА 5,587,000",
+        davlati: "РОССИЯ",
+        toshkent: "Sayidat hotel\n216",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image152.png",
+        mehmon: "Мубинова Гузел Вафаевна \nРоссия Федерацияси Мусулмонлар идорасининг маданият ишлари бўйича департамент бошлиғи ўринбосари",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Дубай-\nТашкент HY334)\nКетиш:11.07\n07:45\n(Ташкент-Дубай HY333)\nМОСКВА-ТАШКЕНТ 4,714,000\nСАМАРКАНД-МОСКВА 5,587,000",
+        davlati: "РОССИЯ",
+        toshkent: "Sayidat hotel\n216",
+        samarqand: "IMOM BUHORIY HOTEL\n201",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image144.png",
+        mehmon: "Татяна Емильяненко \nРоссия Этнография музейи вакили",
+        bilet: "Келиш: 05.07.2026 \n20:00\n(Санкт-Петерсбург-Тошкент)\nКетиш:11.07.2026\n18:40\n(Тошкент-Санкт-Петерсбург)\n \n\nЭКОНОМ\n8,603,000",
+        davlati: "РОССИЯ",
+        toshkent: "Sayidat hotel\n306-хона",
+        samarqand: "IMOM BUHORIY HOTEL\n202",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image169.png",
+        mehmon: "Саттарова Лилия\nҚозон Федерал университетети Филология ва маданиятлараро мулоқот институти  вакили",
+        bilet: "Келиш: 05.07.2026 \n15:05\n(Қозон -Тошкент)\nКетиш:11.07.2026\n17:50\n(Тошкент Қозон)\n \n \nЭКОНОМ\n6,670,000",
+        davlati: "РОССИЯ",
+        toshkent: "Sayidat hotel\n103-хона (St.)",
+        samarqand: "IMOM BUHORIY HOTEL\n203",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image258.png",
+        mehmon: "Ирина Османова\nРоссия Динлар тарихи музейи вакили",
+        bilet: "Келиш: 05.07.2026 \n20:00\n(Санкт-Петерсбург-Тошкент)\nКетиш:11.07.2026\n18:40\n(Тошкент-Санкт-Петерсбург)\n \n \nЭКОНОМ\n8,603,000",
+        davlati: "РОССИЯ",
+        toshkent: "Sayidat hotel\n303-хона(St.)",
+        samarqand: "IMOM BUHORIY HOTEL\n204",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image192.png",
+        mehmon: "Панкратова Наталья \nКорреспондент телеканала “МИР”",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Москва-Тошкент HY604)\nКетиш:11.07.2026\n19:20\n(Тошкент- Москва HY601)\n \n \n \nЭКОНОМ\n6,165,000",
+        davlati: "РОССИЯ",
+        toshkent: "06.07.2026, 19:24\n08.07.2026, 16:00\nфаровон \n201",
+        samarqand: "IMOM BUHORIY HOTEL\n205",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image5.png",
+        mehmon: "Романов Анатолий \nОператор телеканала “МИР”",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Москва-Тошкент HY604)\nКетиш:11.07.2026\n19:20\n(Тошкент- Москва HY601)\n ЭКОНОМ\n6,165,000",
+        davlati: "РОССИЯ",
+        toshkent: "06.07.2026, 19:24\n08.07.2026, 16:00\nфаровон \n203",
+        samarqand: "IMOM BUHORIY HOTEL\n206",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image231.png",
+        mehmon: "Таминдаров Ильнур \nРежиссёр телеканала “МИР”",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Москва-Тошкент HY604)\nКетиш:11.07.2026\n19:20\n(Тошкент- Москва HY601)\n ЭКОНОМ\n6,165,000",
+        davlati: "РОССИЯ",
+        toshkent: "06.07.2026, 19:24\n08.07.2026, 16:00\nфаровон \n204",
+        samarqand: "IMOM BUHORIY HOTEL\n207",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image187.png",
+        mehmon: "Скоридов Сергей\nОператор телеканала “Россия Культура”",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Москва-Тошкент HY604)\nКетиш:11.07.2026\n17:45\n(Тошкент- Москва HY613)\nЭКОНОМ\n6,592,000",
+        davlati: "РОССИЯ",
+        toshkent: "06.07.2026, 19:24\n08.07.2026, 16:00\nфаровон \n125",
+        samarqand: "IMOM BUHORIY HOTEL\n20",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image45.png",
+        mehmon: "Частова Софья \nКорреспондент телеканала “Россия Культура”",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Москва-Тошкент HY604)\nКетиш:11.07.2026\n17:45\n(Тошкент- Москва HY613)\nЭКОНОМ\n6,592,000",
+        davlati: "РОССИЯ",
+        toshkent: "06.07.2026, 19:24\n08.07.2026, 16:00\nфаровон \n126",
+        samarqand: "IMOM BUHORIY HOTEL\n209",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image259.png",
+        mehmon: "Оракулов Михаил\nИнженер телеканала “Россия Культура“",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Москва-Тошкент HY604)\nКетиш:11.07.2026\n17:45\n(Тошкент- Москва HY613)\nЭКОНОМ\n6,592,000",
+        davlati: "РОССИЯ",
+        toshkent: "06.07.2026, 19:24\n08.07.2026, 16:00\nфаровон \n127",
+        samarqand: "IMOM BUHORIY HOTEL\n210",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image214.png",
+        mehmon: "Литровник Наталья \nНачальник службы выпуска телеканала “Россия Культура”",
+        bilet: "Келиш: 06.07.2026 \n17:30\n(Москва-Тошкент HY604)\nКетиш:11.07.2026\n17:45\n(Тошкент- Москва HY613)\nЭКОНОМ\n6,592,000",
+        davlati: "РОССИЯ",
+        toshkent: "06.07.2026, 19:24\n08.07.2026, 16:00\nфаровон \n201",
+        samarqand: "IMOM BUHORIY HOTEL\n211",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image57.png",
+        mehmon: "Минвалеев Руслан Мансурович \n“Татар-информ” информационное агентство главный редактор журнала “Миллиард Татар”",
+        bilet: "Келиш: 05.07.2026 \n15:05\n(Қозон -Тошкент)\nКетиш: 11.07.2026\n17:50\n(Тошкент-Қозон)\n \nЭКОНОМ\n6,461,000",
+        davlati: "РОССИЯ",
+        toshkent: "05.07.2026, 15:30\n08.07.2026, 16:00\nфаровон \n202",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image1.png",
+        mehmon: "Надольская Екатерина Валерьевна \nЖурналист изданий «Russian News» и «Peterburg News»",
+        bilet: "Келиш: 06.07.2026 \n20:00\n(Санкт-Петербург — Ташкент HY634)\nКетиш:11.07.2026\n10:20\nTAS Ташкент — LED Санкт-Петербург C6421\nЭКОНОМ\n9,211,000",
+        davlati: "РОССИЯ",
+        toshkent: "10.07.2026, 21:30\n11.07.2026, 12:00\nфаровон \n117",
+        samarqand: "IMOM BUHORIY HOTEL\n213",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image113.png",
+        mehmon: "Валерий Васильевич Бирюков\nХалқаро журналист",
+        bilet: "-",
+        davlati: "РОССИЯ",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image263.png",
+        mehmon: "Идиятуллин Тимербулат\nТалгат Тажуддин  ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n19:50\nУфа-Тошкент UT-833)\nКетиш 10.07.2026\n04:55\n(Самрканд-Уфа A4-4040)\nЭКОНОМ\n9,442,000",
+        davlati: "РОССИЯ",
+        toshkent: "Тошкент\nHilton\n\nСамарқанд\nSilk Way",
+        samarqand: "IMOM BUHORIY HOTEL\n245",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image16.png",
+        mehmon: "Сафоев Муҳаммадзоҳир \nТалгат Тажуддин ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n19:50\nУфа-Тошкент UT-833)\nКетиш 10.07.2026\n04:55\n(Самрканд-Уфа A4-4040)\nЭКОНОМ\n9,442,000",
+        davlati: "РОССИЯ",
+        toshkent: "Тошкент\nHilton",
+        samarqand: "Silk Way",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image178.png",
+        mehmon: "Абдуллоҳ ибн Муҳаммад Фавзон \nҚирол Абдулазиз номидаги Миллий мулоқот маркази Бош котиби \n\nVIP",
+        bilet: "Ўз ҳисобидан билет олган\nМеҳмонхона бизни ҳисобдан",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Malibu 01W288TB",
+    },
+    {
+        rasm: "../images/image18.png",
+        mehmon: "Абдураҳмон ибн Абдуллоҳ Зайд \nМусулмон олами лигаси Бош котиби ўринбосари, Ислом фиқҳи академияси Бош котиби \n\nVIP",
+        bilet: "Ўз ҳисобидан билет олган\nМеҳмонхона бизни ҳисобдан",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01438PPP",
+    },
+    {
+        rasm: "../images/image179.png",
+        mehmon: "Солиҳ Абдуллоҳ бин Ҳумайд\nМакка шаҳри Бош имоми  \n\nVIP",
+        bilet: "Келиш: 06.07.2026 \n13:55\n(Жидда-Истанбул-Тошкент\nTK0366)\nКетиш 10.07.2026\n04:55\n(Самрканд-Уфа A4-4040)\n\nБизнес\n+ 1 ПЕРЕБРОНЬ + 1 ВОЗВРАТ\n79,935,000 – 14,441,000 возврат = 65,494,000",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Hilton",
+        samarqand: "«Hadith SAG»  меҳмонхонаси \n           308",
+        termiz: "—",
+        sabab: "Mercedes Benz 222 01851PPP",
+    },
+    {
+        rasm: "../images/image15.png",
+        mehmon: "Бадир Муқрон Алмуқайрин \nМакка  шаҳри Бош имоми ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n13:55\n(Жидда-Истанбул-\nТошкент TK366)\nКетиш 11.07.2026\n08:50\n(Тошкент-\nИсломобод HY465)",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Hilton",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n310",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image260.png",
+        mehmon: "Абдулраҳмон Холид бин Хунайфир \nҚирол Файсал номидаги ислом тадқиқотлари маркази бош котиби маслаҳатчиси",
+        bilet: "-",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image125.png",
+        mehmon: "Мамдуҳ Усмон \nЖидда шаҳридаги Ислом санъати музейи директори",
+        bilet: "-",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "02.07.2026 - 15.07.2026\nSayidat hotel\n213-хона\n15.07.2026- санасидан \nMovenpick hotel \n2010",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image171.png",
+        mehmon: "Абдуллоҳ ибн Муҳаммад \nФавзон ҳамроҳи",
+        bilet: "Ўз ҳисобидан билет олган",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Меҳмонхона бизни ҳисобдан\n-",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image14.png",
+        mehmon: "Абдураҳмон ибн Абдуллоҳ \nЗайднинг ҳамроҳи",
+        bilet: "Ўз ҳисобидан билет олган\nМеҳмонхона бизни ҳисобдан",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image226.png",
+        mehmon: "Абдураҳмон ибн Абдуллоҳ \nЗайднинг ҳамроҳи",
+        bilet: "Ўз ҳисобидан билет олган\nМеҳмонхона бизни ҳисобдан",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image249.png",
+        mehmon: "Профессор Доктор Алқоси Муфарриҳ Сулаймон \nИмом Муҳаммад бин Сауд университети Шариат факультети",
+        bilet: "Келиш: 06.07.2026 \n13:55\n(Риёд-Истанбул-Тошкент TK366)\nКетиш: 14.07.2026\n02:30\n(Тошкент-Истанбул TK0371)\n \nЭКОНОМ\n11,413,000",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Inspira      \n           417",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image43.png",
+        mehmon: "Доктор Ал-Бухорий Бакр Муҳаммад Фадла\nИмом Муҳаммад ибн Сауд Ислом университети",
+        bilet: "Келиш: 06.07.2026 \n02:45\n(Ар-Риёд -Дубай -Тошкент)\nКетиш: 11.07.2026\n04:05\n(Тошкент-Дубай)\n \nЭКОНОМ\n9,617,000",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Inspira hotel\n(st)\n218",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image107.png",
+        mehmon: "Машҳур Умар Абу Шаъф \nИслом олами уюшмаси илмий тадқиқотлар бўлими бошлиғи",
+        bilet: "Келиш: 06.07.2026 \n16:10\n(Жидда-Дубай-Тошкент EK2456)\nКетиш: 11.07.2026\n17:30\n(Тошкент- Дубай EK2457)\n\nБИЗНЕС\n41,019,000",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Inspira hotel\n(st)\n322",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image223.png",
+        mehmon: "Серафи Умния Эмад \nЖидда шаҳридаги Ислом санъати музейи ходимаси",
+        bilet: "-",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "02.07.2026 - 15.07.2026\nSayidat hotel\n217-хона\n15.07.2026- санасидан \nMovenpick hotel \n2011",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image253.png",
+        mehmon: "Алшариф Жасим Нашаф \nБутунжахон ислом уюшмасида\nҚиёсий диншунослик ва исломшунослик соҳаси мутахассиси",
+        bilet: "Келиш: 06.07.2026 \n16:10\n(Жидда-Дубай-Тошкент EK2456)\nКетиш: 11.07.2026\n17:30\n(Тошкент- Дубай EK2457)\n\nЭКОНОМ\n10,981,000",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "Inspira\n323",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image196.png",
+        mehmon: "Холид бин Ҳамад ал-Малик \n“Ал-Жазира” газетаси бош муҳаррири",
+        bilet: "Келиш: 05.07.2026 \n22:30\n(Риёд-Истанбул-\nТошкент)\nКетиш: 14.07.2026\n23:50\n(Тошкент-\nИстанбул)\n\nБИЗНЕС\n38,910,000 + 4,450,000 ПЕРЕБРОНЬ",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "10.07.2026, 23:05\n11.07.2026, 12:00\nфаровон\n220",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n302",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image56.png",
+        mehmon: "Усман Маҳмуд ал-Синий \n“ал-Ватан” газетаси бош муҳаррири",
+        bilet: "Келиш: 05.07.2026 \n22:30\n(Риёд-Истанбул-\nТошкент)\nКетиш 11.07.2026\n14.07.2026\n02:30\n(Тошкент-Истанбул)\nЭКОНОМ\n13,930,000 + 2 АПГРЕЙДА 26,969,000 + 24,120,000 + 5,300,000 ПЕРЕБРОНЬ",
+        davlati: "САУДИЯ АРАБИСТОНИ ПОДШОҲЛИГИ",
+        toshkent: "10.07.2026, 23:01\n11.07.2026, 12:00\n Фаровон\n219",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n304",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image10.png",
+        mehmon: "Муҳаммад Абулхайр Шукрий \nВақф вазири \n\nVIP",
+        bilet: "Келиш: 06.07.2026 \n22:30\nДамашқ — Истанбул — Тошкент TK0362\nКетиш: 10.07.2026\n23:50\nТошкент- Истанбул TK363",
+        davlati: "СУРИЯ",
+        toshkent: "—",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n315",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01969PPP",
+    },
+    {
+        rasm: "../images/image210.png",
+        mehmon: "Ал Аҳмад Назир\nМуҳаммад Абулхайр Шукрийнинг ҳамроҳи",
+        bilet: "-",
+        davlati: "СУРИЯ",
+        toshkent: "—",
+        samarqand: "IMOM BUHORIY HOTEL\n226",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image23.png",
+        mehmon: "Проф. доктор Куршад Зорлу \nТуркия Адолат ва тараққиёт партияси раиси ўринбосари, Туркий дунё билан алоқалар бошқармаси раҳбари \n\nVIP",
+        bilet: "Келиш: 07.07.2026 \n00:50\n(Истанбул-Тошкент TK370)\nКетиш: 09.07.2026\n09:35\n(Тошкент-\nИстанбул TK369)\n\nЭконом\n9,174,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 013Темел Акюрек 91PPP",
+    },
+    {
+        rasm: "../images/image95.png",
+        mehmon: "Темел Акюрек\nТуркий дунё билан алоқалар бошқармаси раҳбари ўринбосари",
+        bilet: "Келиш: 07.07.2026 \n00:50\n(Истанбул-Тошкент TK370)\nКетиш: 09.07.2026\n09:35\n(Тошкент-\nИстанбул TK369)\n\nБИЗНЕС\n33,978,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "малибу",
+    },
+    {
+        rasm: "../images/image215.png",
+        mehmon: "Меруерт Памбетова \nКуршад Зорлунинг Матбуот маслаҳатчиси",
+        bilet: "-",
+        davlati: "ТУРКИЯ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image123.png",
+        mehmon: "Чағри Зорлу \nКуршад Зорлунинг Хамроҳи",
+        bilet: "Келиш: 07.07.2026 \n00:50\n(Истанбул-Тошкент TK370)\nКетиш: 09.07.2026\n09:35\n(Тошкент-\nИстанбул TK369)\n\nЭконом\n9,174,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image50.png",
+        mehmon: "Музеффер Шекер\nТуркия Фанлар Академияси президенти\n\n(VIP)",
+        bilet: "Келиш: 07.07.2026 \n7:55\n(Анкара-Истанбул-\nТошкент TK368)\nКетиш: 11.07.2026\n7:20\n(Тошкент-Анкара VF584)\n\nБИЗНЕС+ЭКОНОМ\n22,046,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)\n110",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n402",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image97.png",
+        mehmon: "Муртазо Бедир \nИслом тадқиқотлари маркази (İSAM) директори",
+        bilet: "Келиш: 06.07.2026 \n19:00\n(Истанбул-Тошкент HY272)\nКетиш: 11.07.2026\n07:40\n(Тошкент- Истанбул HY271)\n\nЭконом\n7,070,000 + ВОЗВРАТ ПЕРЕБРОНЬ 6,122,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n413",
+        termiz: "Reikartz\n4008",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image235.png",
+        mehmon: "Муҳаммад Рашид Акпинар \nСалжуқ университети Имом Мотуридий маркази директори",
+        bilet: "-",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira\n525",
+        samarqand: "SILK WAY \n110",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image116.png",
+        mehmon: "Жошкун Йилмаз \nТуркия Қўлёзмалар бошқармаси раҳбари",
+        bilet: "Келиш: 06.07.2026 \n19:00\n(Истанбул-Тошкент HY272)\nКетиш: 11.07.2026\n07:40\n(Истанбул-Тошкент HY271)\n\nБИЗНЕС\n—----------------",
+        davlati: "ТУРКИЯ",
+        toshkent: "Hilton l",
+        samarqand: "—",
+        termiz: "Reikartz\n4001",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image221.png",
+        mehmon: "Дурсун Сари \nКайсери вилояти муфтияти воизи",
+        bilet: "Келиш: 06.07.2026\n04:45 \nКайсери-Стамбул-Ташкент TK364\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул TK373)\nЭконом\n9,278,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "SILK WAY \n336",
+        termiz: "Reikartz\n3004",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image68.png",
+        mehmon: "Снобер Аҳмад \nИстанбул “29 Май” университети доценти",
+        bilet: "Келиш: 06.07.2026 \n04:10\n(Истанбул-Тошкент HY274)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул)\nЭконом\n9,170,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)\n317",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image92.png",
+        mehmon: "Ҳазне Ҳайтам \nСабаҳаттин Заим университети Ислом фанлари факултети",
+        bilet: "Келиш: 06.07.2026 \n04:10\n(Анталя-Ташкент HY274)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул)\nЭконом\n10,477,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)\n517",
+        samarqand: "Imom Buxoriy Hotel\n229",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image53.png",
+        mehmon: "Маҳмуд Масрий \nФотиҳ Султон Меҳмет университети профессори, Истанбул",
+        bilet: "Келиш: 08.07.2026 \nВозврат билет, переброн на 7 или 8 июля\n(Истанбул-Тошкент TK366)\nКетиш: 11.07.2026\n23:50\n(Тошкент-\nИстанбул TK363)\nЭконом\n30,091,000\nПЕРЕБРОНЬ ВКЛ",
+        davlati: "ТУРКИЯ",
+        toshkent: "-",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image12.png",
+        mehmon: "Аҳмад Файсал\nСулаймон Демирел университети",
+        bilet: "Келиш: 06.07.2026 \n17:40\n(Анталя-Ташкент HH-5572)\n Кетиш: 11.07.2026\n06:10\n(Ташкент- Анталя HH-5571)\nЭконом\n10,210,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)\n412",
+        samarqand: "Imom Buxoriy Hotel\n231",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image94.png",
+        mehmon: "Муҳаммад Анас Сарминий \nИстанбул университети Ҳадис илми доценти",
+        bilet: "Келиш: 06.07.2026 \n04:45\n(Газиантеп-Ташкент TK364)\nКетиш: 11.07.2026\n01:10\n(Ташкент- Истанбул)\nЭконом\n8,501,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Мувинпик",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image96.png",
+        mehmon: "Солиҳ Чифт \nБурса Улудағ университети профессори",
+        bilet: "Келиш: 06.07.2026 \n04:10\n(Истанбул-Тошкент HY274)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул)\nЭконом\n10,477,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)\n415",
+        samarqand: "SILK WAY \n335",
+        termiz: "Reikartz\n3011",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image38.png",
+        mehmon: "Ферҳат Гўкче \nАнқара Йилдирим Беязит университети доценти",
+        bilet: "Келиш: 06.07.2026 \n06:00\n(Анкара-Тошкент VF583)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул TK373)\n\nЭконом\n11,326,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)\n219",
+        samarqand: "SILK WAY \n340",
+        termiz: "Reikartz\n3012",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image234.png",
+        mehmon: "Ҳуля Алпер \nМармара университети Илоҳиёт факултети профессори",
+        bilet: "Келиш: 06.07.2026 \n04:10\n(Истанбул-Тошкент HY274)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул)\n \nЭконом\n10,477,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)\n519",
+        samarqand: "SILK WAY \n111",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image135.png",
+        mehmon: "Сўнмаз Кутлу \nАнқара университети профессори",
+        bilet: "Келиш: 06.07.2026 \n06:00\n(Анкара-Тошкент VF583)\nКетиш: 11.07.2026\n07:20\n(Тошкент-Эсенбоға аэропорти VF584)\n\nЭконом\n7,627,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)\n226",
+        samarqand: "SILK WAY \n107",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image101.png",
+        mehmon: "Ҳикметуллоҳ Эртач \nЗонгулдак Булент Эжевит университети доценти",
+        bilet: "Келиш: 06.07.2026 \n06:00\n(Анкара-Тошкент VF583)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-\nИстанбул TK373)\n\nЭконом\n11,326,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)\n518",
+        samarqand: "SILK WAY \n224",
+        termiz: "Reikartz\n3017",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image71.png",
+        mehmon: "Абдумалик Тўйчибоев \nАнқара Йилдирим Боязид университети доценти",
+        bilet: "Келиш: 06.07.2026 \n17:25\n(Анкара-Тошкент HY-292)\nКетиш: 13.07.2026\n07:15\n(Тошкент-Анкара HY-291)\n\nЭконом\n7,250,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "-",
+        samarqand: "SILK WAY \n123",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image131.png",
+        mehmon: "Мемҳет Амин Ўзафшар \nАнқара университети профессори",
+        bilet: "Келиш: 06.07.2026 \n06:00\n(Анкара-Тошкент VF583)\nКетиш: 11.07.2026\n05:35\n(Самарканд-Истанбул TK373)\n\nЭконом\n14,200,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira\n217",
+        samarqand: "SILK WAY \n328",
+        termiz: "Reikartz \n3009",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image198.png",
+        mehmon: "Джеймс Ким\nTRT World телеканали продюссери",
+        bilet: "Келиш: 06.07.2026 \n22:30\n(Торонто-Истанбул-Тошкент TK0362)\nКетиш: 13.07.2026\n09:35\n(Тошкент -Истанбул TK369)\n \nЭконом\n31,940,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image65.png",
+        mehmon: "Алижан Аянлар\nTRT World  телеканали бошловчиси",
+        bilet: "Келиш: 08.07.2026 \n06:00\n(Анкара-Самарканд)\nКетиш: 19.07.2026\n05:35\n(Самарқанд-Истанбул)\n \nЭконом\n14,400,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image199.png",
+        mehmon: "Юнус Карабак\nTRT World  телеканали оператори",
+        bilet: "Келиш: 06.07.2026 \n13:55\n(Истанбул-Тошкент TK366)\nКетиш: 13.07.2026\n09:35\n(Тошкент -Истанбул TK369)\n \nЭконом\n7,510,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "10.07.2026, 21:30\n12.07.2026, 12:00\nфаровон\n107",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image93.png",
+        mehmon: "Нуреттин Имрал\nTRT World  телеканали оператори",
+        bilet: "Келиш: 06.07.2026 \n13:55\n(Истанбул-Тошкент TK366)\nКетиш: 13.07.2026\n09:35\n(Тошкент -Истанбул TK369)\n \nЭконом\n7,510,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "06.07.2026, 15:21\n08.07.2026, 16:00\nфаровон\n118",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image158.png",
+        mehmon: "Мурсел Гундўғду\n“Haber7” ахборот порталининг мухбири",
+        bilet: "Келиш: 06.07.2026 \n19:00\n(Истанбул-Тошкент HY272)\n \nКетиш 11.07.2026\n16:50\n(Тошкент – Истанбул HY273)\n \nЭконом\n7,070,000",
+        davlati: "ТУРКИЯ",
+        toshkent: "06.07.2026, 21:12\n08.07.2026, 16:00\n228",
+        samarqand: "SILK WAY \n108",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image230.png",
+        mehmon: "Марям Айбека Синан\n“Türkiye” газетаси мухбири, Адолат ва тараққиёт партияси Туркий дунё билан алоқалар бошқармаси маслаҳатчиси",
+        bilet: "Келиш: 06.07.2026 \n19:00\n(Истанбул-Ташкент HY272)\nКетиш  11.07.2026\n16:50\n(Ташкент-Истанбул HY273)\n \nЭконом\n—------------",
+        davlati: "ТУРКИЯ",
+        toshkent: "06.07.2026, 21:12\n08.07.2026, 16:00\n228",
+        samarqand: "SILK WAY \n108",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image219.png",
+        mehmon: "Абдулатиф Буазизи \nЗайтуна университети ректори",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Тунис-Истанбул-\nТошкент TK0368)\nКетиш 11.07.2026\n15:15\n(Тошкент-\nИстанбул TK0367)\n\n Эконом\n21,752,000 + 5,929,000 2 ПЕРЕБРОНИ",
+        davlati: "ТУНИС",
+        toshkent: "Movenpick hotel",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image140.png",
+        mehmon: "Эл Алайми Али \nТадқиқотчи",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Тунис-Истанбул-\nТошкент TK0368)\nКетиш  11.07.2026\n15:15\n(Тошкент-\nИстанбул TK0367)\n\n Эконом\n21,752,000",
+        davlati: "ТУНИС",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image247.png",
+        mehmon: "Абдулжалил Салим \n“Байт ал-Ҳикма” фанлар академияси аъзоси",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Тунис-Истанбул-\nТошкент TK368)\nКетиш 11.07.2026\n15:15\n(Тошкент-\nИстанбул TK367)\n\n Эконом \n—------------",
+        davlati: "ТУНИС",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image183.png",
+        mehmon: "Аззуз Шауалий \nҲадиси шариф фанлари профессори",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Истанбул-Тошкент TK368)\nКетиш 11.07.2026\n15:15\n(Тошкент-\nИстанбул TK367)\n\n Эконом \n—-------------",
+        davlati: "ТУНИС",
+        toshkent: "Inspira hotel\n(st)\n337",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image124.png",
+        mehmon: "Имад Абдуллоҳ Ҳамдан \nФаластин маданият вазири \n\nVIP",
+        bilet: "Келиш: 06.07.2026 \n13:55\n(Амман -Истанбул-Тошкент TK366)\nКетиш 10.07.2026\n23:50\n(Тошкент -Истанбул TK363)\n\n БИЗНЕС\n36,612,000",
+        davlati: "ФАЛАСТИН",
+        toshkent: "Movenpick st",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n317",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01404PPP",
+    },
+    {
+        rasm: "../images/image40.png",
+        mehmon: "Маҳмуд Азми Юсуф Абдулжавад\nҲамроҳи",
+        bilet: "Келиш: 06.07.2026 \n13:55\n(Амман -Истанбул-Тошкент TK366)\nКетиш 10.07.2026\n23:50\n(Тошкент -Истанбул TK363)\n\n Эконом \n14,665,000",
+        davlati: "ФАЛАСТИН",
+        toshkent: "Movenpick st",
+        samarqand: "IMOM BUHORIY HOTEL\n241",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image182.png",
+        mehmon: "Гюлтен Бедретдин \nФинляндия Ислом жамияти президенти \n\nVIP",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Хелсинки-Истанбул-Тошкент TK368)\nКетиш 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\n\n БИЗНЕС\n35,711,000",
+        davlati: "ФИНЛЯНДИЯ",
+        toshkent: "Inspira hotel\n(st)\n225",
+        samarqand: "«Hadith SAG» меҳмонхонаси",
+        termiz: "—",
+        sabab: "Malibu 01T712XC",
+    },
+    {
+        rasm: "../images/image102.png",
+        mehmon: "Реза Дегати \nТаниқли фотограф",
+        bilet: "Келиш: 06.07.2026 \n01:00\n(Париж-Баку-Ташкент)\nКетиш 11.07.2026\n05:35\n(Самарканд-Истанбул)\n Эконом \n19,974,000",
+        davlati: "ФРАНЦИЯ",
+        toshkent: "10.07.2026, 21:08\n11.07.2026, 12:00\nФаровон\n     116",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image238.png",
+        mehmon: "Муҳаммад Саид Амур ал-Ҳажарий \nЎмон Давлат Кенгаши аъзоси, сенатор \n\nVIP",
+        bilet: "Келиш: 05.07.2026 \n13:55\n(Истанбул-Тошкен)\nКетиш 11.07.2026\n05:10\n(Тошкент-Маскат)\n\n БИЗНЕС\n38,598,000",
+        davlati: "ЎМОН",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "«Hadith SAG» меҳмонхона",
+        termiz: "—",
+        sabab: "Malibu 01Z511NB",
+    },
+    {
+        rasm: "../images/image155.png",
+        mehmon: "Мохамад Ораби Закария \nOrabi International Group раҳбари",
+        bilet: "Келиш: 06.07.2026 \n02:45\n(Маскат-Дубай- Тошкент FZ1941)\nКетиш 12.07.2026\n05:10\n(Тошкент -Маскат)\n\n Эконом \n10,756,000",
+        davlati: "ЎМОН",
+        toshkent: "Inspira hotel\n(st)\n526",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image256.png",
+        mehmon: "Абакар Маҳамат Исо \nҲадис илми бўйича мутахассис",
+        bilet: "Келиш: 07.07.2026 \n4:45\n(Истанбул-Тошкент TK364)\nКетиш 11.07.2026\n23:50\n(Тошкент-\nИстанбул TK363)\n\n Эконом \n34,583,000",
+        davlati: "ЧАД",
+        toshkent: "Inspira\n510",
+        samarqand: "—",
+        termiz: "Reikartz\n2025",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image194.png",
+        mehmon: "Маҳмут Шариф Муҳаммат Нур \nОлий педагогика институти",
+        bilet: "Келиш: 07.07.2026 \n4:45\n(Истанбул-Тошкент TK364)\nКетиш 11.07.2026\n23:50\n(Тошкент-\nИстанбул TK363)\n\n Эконом \n25,910,000",
+        davlati: "ЧАД",
+        toshkent: "Inspira\n433",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image91.png",
+        mehmon: "Наврўзбой Тағанули \nҚозоғистон мусулмонлари диний бошқармаси раиси, муфтий\n\nVIP",
+        bilet: "Келиш: 06.07.2026 \n20:25\n(Остона-\nТошкент HY722)\nКетиш 08.07.2026\n15:30\n(Тошкент-\nОстона HY721)\n\n—----------",
+        davlati: "ҚОЗОҒИСТОН",
+        toshkent: "-",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Mercedes Benz 222 01831PPP",
+    },
+    {
+        rasm: "../images/image84.png",
+        mehmon: "Ораз Даулет \nМуфтий ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n20:25\n(Остона-\nТошкент HY722)\nКетиш 08.07.2026\n15:30\n(Тошкент-\nОстона HY721)\n\n Эконом \n2,287,000",
+        davlati: "ҚОЗОҒИСТОН",
+        toshkent: "-",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image204.png",
+        mehmon: "Мажиев Гилимбек\n  Қозоғистон мусулмонлари диний идораси (ҚМДИ) Аппарати маъсули",
+        bilet: "Келиш: 06.07.2026 \n20:25\n(Остона-\nТошкент HY722)\nКетиш 08.07.2026\n15:30\n(Тошкент-\nОстона HY721)\n\n Эконом \n3,880,000",
+        davlati: "ҚОЗОҒИСТОН",
+        toshkent: "Sayidat hotel\n312-хона",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image142.png",
+        mehmon: "Рустем Сабиржанули \nТуркистон вилояти Дин ишлари бошкармаси бошлиги",
+        bilet: "Тошкентда\n(билет керак эмас)",
+        davlati: "ҚОЗОҒИСТОН",
+        toshkent: "Sayidat hotel\n221-хона",
+        samarqand: "—",
+        termiz: "Reikartz\n4011",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image6.png",
+        mehmon: "Ершат Онгар \nНур-Муборак Миср ислом маданияти университети проректори",
+        bilet: "Келиш: 06.07.2026 \n13:10\nОстона-Тошкент\nКетиш 11.07.2026\n16:40\n(Тошкент- Алмати)\n\n Эконом \n4,012,000",
+        davlati: "ҚОЗОҒИСТОН",
+        toshkent: "Inspira hotel\n(st)\n401",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image138.png",
+        mehmon: "Гулайим Жумабекова\nА.Кастейев номидаги санъат музейи директори",
+        bilet: "Келиш: 05.07.2026 \n12:25\n(Алмати-Тошкент)\nКетиш 11.07.2026\n20:40\n(Тошкент- Алмати)\n\n Эконом \n3,960,000",
+        davlati: "ҚОЗОҒИСТОН",
+        toshkent: "Sayidat hotel\n305–хона",
+        samarqand: "IMOM BUHORIY HOTEL\n301",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image48.png",
+        mehmon: "Абдулазиз Зокиров \nҚирғизистон мусулмонлари диний идораси раиси \n\nVIP",
+        bilet: "Келиш: 06.07.2026\n(Бишкек-Ташкент HY778)\nКетиш: 11.07.2026\n(Ташкент- Бишкек HY777)\n(куйди)\nКетиш: 08.07.2026 С6219 (ўзи сотиб олди)\n\n БИЗНЕС\n8,707,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "Hilton I",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Mercedes Benz 222 01297PPP",
+    },
+    {
+        rasm: "../images/image203.png",
+        mehmon: "Нурдинов Бакитбек \nАбдулазиз Зокиров ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Ташкент HY778)\n \nКетиш 11.07.2026\n15:20\n(Ташкент- Бишкек HY777)\n\n Эконом \n2,850,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "Hilton st",
+        samarqand: "IMOM BUHORIY HOTEL\n302",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image220.png",
+        mehmon: "Ташибеков Талантбек Нурланович \nҚирғиз Республикаси Президенти ҳузуридаги Дин ишлари ва миллатлараро муносабатлар миллий агентлиги директори \n\nVIP",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Ташкент HY778)\n \nКетиш 11.07.2026\n15:20\n(Ташкент- Бишкек HY777)\n\n БИЗНЕС\n9,473,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "-",
+        samarqand: "«Hadith SAG» меҳмонхонаси\n415",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01974PPP",
+    },
+    {
+        rasm: "../images/image30.png",
+        mehmon: "Дуйшеналиева Айчурок Болотбековна \nТашибеков ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Ташкент HY778)\n \nКетиш 11.07.2026\n15:20\n(Ташкент- Бишкек HY777)\n\n Эконом \n—---------",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "-",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image130.png",
+        mehmon: "Абдикадиров Кубаничбек \nТашибеков ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Ташкент HY778)\nКетиш 11.07.2026\n15:20\n(Тошкент-\nБишкек HY777)\n\n Эконом\n2,850,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "-",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image126.png",
+        mehmon: "Шоҳимардон Ўринбеков Туркия “Манас” университети Илоҳиёт факультети ўқитувчиси",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Ташкент HY778)\nКетиш 11.07.2026\n15:20\n(Тошкент-\nБишкек HY777)\n\n Эконом\n2,700,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "Inspira hotel\n(st)\n316",
+        samarqand: "SILK WAY \n324",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image134.png",
+        mehmon: "Ажимаматов Зайлабидин \nЎш давлат университети Илоҳиёт факультети декани",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Ташкент HY778)\nКетиш 11.07.2026\n15:20\n(Тошкент-\nБишкек HY777)\n\n Эконом\n390,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "Inspira hotel\n(st)\n410",
+        samarqand: "—",
+        termiz: "Reikartz\n2001",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image33.png",
+        mehmon: "Асилбек Абдуғаниев \nЎш давлат университети (Қирғизистон) Илоҳиёт факультети доктори",
+        bilet: "Келиш: 06.07.2026 \n06:00\n(Анкара-Тошкент)\n Кетиш 11.07.2026\n19:00\n(Ташкент-Ош)\n\n Эконом\n5,692,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "Inspira hotel\n(st)\n535",
+        samarqand: "IMOM BUHORIY HOTEL\n305",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image100.png",
+        mehmon: "Нурхат Иманкулова \nҚирғизистон Республикаси Миллий тарих музейи вакили",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Тошкент HY778)\nКетиш 11.07.2026\n15:20\n(Тошкент-\nБишкек HY777)\n\n Эконом\n2,850,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "Inspira hotel\n(st)\n301",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image176.png",
+        mehmon: "Аниса Асанбекова\nНациональная телерадиовещательная корпорация Кыргызской Республики",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Тошкент HY778)\nКетиш 11.07.2026\n15:20\n(Тошкент-\nБишкек HY777)\n\n Эконом\n2,850,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "08.07.2026, 16:00\n08.07.2026\n, 16:00\nфаровон\n219",
+        samarqand: "IMOM BUHORIY HOTEL\n307",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image241.png",
+        mehmon: "Жаныбек Эсеналиев\nНациональная телерадиовещательная корпорация Кыргызской Республики",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Тошкент HY778)\nКетиш 11.07.2026\n15:20\n(Тошкент-\nБишкек HY777)\n\n Эконом\n2,850,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "06.07.2026, 21:08\n08.07.2026, 16:00\nфаровон\n218",
+        samarqand: "IMOM BUHORIY HOTEL\n308",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image75.png",
+        mehmon: "Урмат Койчубеков\nНациональная телерадиовещательная корпорация Кыргызской Республики",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Тошкент HY778)\nКетиш 11.07.2026\n15:20\n(Тошкент-\nБишкек HY777)\n\n Эконом\n2,850,000",
+        davlati: "ҚИРҒИЗИСТОН",
+        toshkent: "06.07.2026, 21:09\n08.07.2026, 16:00\nфаровон\n220",
+        samarqand: "IMOM BUHORIY HOTEL\n309",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image88.png",
+        mehmon: "Муҳаммад Абдулҳаким ал-Кандий \nҲиндистоннинг Керала штатидаги “Марказ билимлар шаҳри” бошқарув директори",
+        bilet: "Келиш: 06.07.2026 \n16:15\n(Деҳли-Тошкент HY424)\nКетиш 11.07.2026\n08:45\n(Тошкент-Деҳли HY423)\n\n Эконом\n—---",
+        davlati: "ҲИНДИСТОН",
+        toshkent: "Inspira\n336",
+        samarqand: "—",
+        termiz: "Reikartz\n5003",
+        sabab: "Malibu 01S295SC",
+    },
+    {
+        rasm: "../images/image111.png",
+        mehmon: "Муҳаммад Абубакр Содиқ Чеммарапатта \nҲамроҳи",
+        bilet: "Келиш: 06.07.2026 \n16:15\n(Деҳли-Тошкент HY424)\nКетиш 11.07.2026\n08:45\n(Тошкент-Деҳли HY423)\n\n Эконом\n6,380,000",
+        davlati: "ҲИНДИСТОН",
+        toshkent: "Inspira\n501",
+        samarqand: "—",
+        termiz: "Reikartz\n3013",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image264.png",
+        mehmon: "Саиду Муҳаммад \nКалкутта университети тадқиқотчиси",
+        bilet: "Келиш: 06.07.2026 \n13:00\nКодикодже-Шарджа-Тошкент G9273\nКетиш 11.07.2026\n14:40\n(Тошкент-Абу-Даби 3L764)\n\n Эконом\n—------------",
+        davlati: "ҲИНДИСТОН",
+        toshkent: "Inspira hotel\n(st)\n110",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image177.png",
+        mehmon: "Адилет Кудайбергенов\nМарказий Осиё – Хитой формати Бош директор ўринбосари",
+        bilet: "Келиш: 05.07.2026 \n21:10\n(Сиань-Ташкент\nMU855)\nКетиш 08.07.2026\n22:30\n(Ташкент-Сиaнь)\n\n Эконом\n—------",
+        davlati: "ХИТОЙ",
+        toshkent: "Sayidat hotel\n310-хона (St.)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image122.png",
+        mehmon: "Шабнам Шарифова \nМарказий Осиё – Хитой формати эксперти",
+        bilet: "Келиш: 05.07.2026 \n21:10\n(Сиань-Ташкент\nMU855)\nКетиш 08.07.2026\n22:30\n(Ташкент-Сиaнь)\n\n Эконом\n—----------",
+        davlati: "ХИТОЙ",
+        toshkent: "Sayidat hotel\n316-хона (St.)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image47.png",
+        mehmon: "Манабу Шимизу \nЯпония Ривожланаётган иқтисодиётлар институти фахрий профессори",
+        bilet: "Келиш: 06.07.2026 \n20:00\n(Токё-Сеул-\nТошкент OZ573)\nКетиш 11.07.2026\n21:10\n(Тошкент-\nГуанжоу CZ3054)\n\n Эконом\n16,640,000",
+        davlati: "ЯПОНИЯ",
+        toshkent: "Inspira\n433",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image20.png",
+        mehmon: "Абдураҳмон Ли Джу Хва\nКорея мусулмонлари федерацияси имоми",
+        bilet: "Келиш: 06.07.2026 \n13:20\n(Сеул-Тошкент)\nКетиш: 11.07.2026\n20:45\n(Тошкент-Сеул)\n\n Эконом\n—------",
+        davlati: "ЖАНУБИЙ КОРЕЯ",
+        toshkent: "Мувинпик",
+        samarqand: "—",
+        termiz: "IMOM BUHORIY HOTEL\n301",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image70.png",
+        mehmon: "Маҳра ал-Тамимий\nМанара марказининг Ижрочи маъмури",
+        bilet: "Келиш: 06.07.2026 \n16:10\n(Дубай-Тошкент\nFZ-1945)\nКетиш: 11.07.2026\n17:30\n(Тошкент-Дубай\nFZ-1946)\nСамаркандда  Hilton garden in мехмонхонаси брон килган\nHyat regensy\nЎзи брон килган\nАвиабилет ва мехмонхона ўз ҳисобидан\n\n Эконом",
+        davlati: "БАА",
+        toshkent: "Hyatt Regency\n(ўз ҳисобидан)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image164.png",
+        mehmon: "Салим Аҳмад ал-Ҳассаний\nРуководитель проекта «1001 изобретение»",
+        bilet: "Келиш: 06.07.2026 \n16:40\n(Дубай-Тошкент)\nКетиш: 09.07.2026\n08:25\n(Тошкент-Дубай)\n(кетиш санаси ўзгариши мумкин)\n\n Эконом\nВОЗВРАТ, ШТРАФ\n1,676,000",
+        davlati: "БАА",
+        toshkent: "-\n(St.)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image121.png",
+        mehmon: "Анвар ал-Ҳанайи  \nБАА  Ислом ишлари, вақфлар ва закот бош бошқармаси вакили",
+        bilet: "Келиш: 06.07.2026 \n16:10\n(Дубай- Тошкент FZ 1945)\nКетиш:12.07.2026\n17:30\n(Тошкент-Дубай\nFZ 1946)\n \n Эконом\n—----\nАвиабилет ва мехмонхона ўз ҳисобидан",
+        davlati: "БАА",
+        toshkent: "Hilton\nЎзи брон килган",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image46.png",
+        mehmon: "Муҳаммад ал-Ҳаммадий\nБАА  Ислом ишлари, вақфлар ва закот бош бошқармаси вакили",
+        bilet: "Келиш: 06.07.2026 \n16:10\n(Дубай- Тошкент FZ 1945)\nКетиш: 12.07.2026\n17:30\n(Тошкент-Дубай\nFZ 1946)\n\n Эконом\n—-------\nАвиабилет ва мехмонхона ўз ҳисобидан",
+        davlati: "БАА",
+        toshkent: "Hilton\nЎзи брон килган",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image25.png",
+        mehmon: "Муборак ал-Ҳусаний\nБАА  Ислом ишлари, вақфлар ва закот бош бошқармаси вакили",
+        bilet: "Келиш: 06.07.2026 \n16:10\n(Дубай- Тошкент FZ 1945)\nКетиш: 12.07.2026\n17:30\n(Тошкент-Дубай\nFZ 1946)\nАвиабилет ва мехмонхона ўз ҳисобидан",
+        davlati: "БАА",
+        toshkent: "Hilton\nЎзи брон килган",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image202.png",
+        mehmon: "Муҳаммад ал-Сарраҳ\n Шайх Зоид Буюк масжиди маркази вакили",
+        bilet: "Келиш: 06.07.2026 \n16:10\n(Дубай- Тошкент FZ 1945)\nКетиш: 12.07.2026\n17:30\n(Тошкент-Дубай\nFZ 1946)\nАвиабилет ва мехмонхона ўз ҳисобидан",
+        davlati: "БАА",
+        toshkent: "Hilton\nЎзи брон килган",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image89.png",
+        mehmon: "Аҳмад Субаян\nШайх Зоид Буюк масжиди маркази вакили",
+        bilet: "Келиш: 05.07.2026 \n16:10\n(Дубай- Тошкент\nFZ 1945)\nКетиш: 12.07.2026\n17:30\n(Тошкент- Дубай\nFZ 1946)\nЭконом\n—-----",
+        davlati: "БАА",
+        toshkent: "Hilton hotel\nЎз хисобидан",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image201.png",
+        mehmon: "Саид Рақеа ал-Аҳбабий\nШайх Зоид Буюк масжиди маркази вакили",
+        bilet: "Келиш: 05.07.2026 \n16:10\n(Дубай-Тошкент\nFZ 1945)\nКетиш: 12.07.2026\n17:30\n(Тошкент-Дубай\nFZ 1946)\n\n Эконом\n—--",
+        davlati: "БАА",
+        toshkent: "Hilton hotel\nЎз хисобидан",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image98.png",
+        mehmon: "Станко Благоевич\nЗаместитель министра культуры, директор Главного департамента международного сотрудничества Минкультуры Сербии",
+        bilet: "Келиш: 07.07.2026 \n16:10\n(Дубай-Тошкент\nFZ 1945)\nКетиш: 12.07.2026\n17:30\n(Тошкент-\nДубай\nFZ 1946)\n\n Бизнес\n57,218,000",
+        davlati: "СЕРБИЯ",
+        toshkent: "Inspira\n320",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image160.png",
+        mehmon: "Збигнев Рау \nПольша Сейми (қуйи палата) депутати, собиқ ташқи ишлар вазири",
+        bilet: "Келиш: 06.07.2026 \n13:55\n(Варшава-Истанбул-Ташкент TK366)\nКетиш: 11.07.2026\n02:20\n(Тошкент-\nВаршава)\n\nБизнес\n—",
+        davlati: "ПОЛЬША",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Malibu 01Z777KU",
+    },
+    {
+        rasm: "../images/image58.png",
+        mehmon: "Имом Муҳамад Башар Арафат \nАҚШ Мэриленд штати Цивилизациялар мулоқоти ва ҳамкорлиги фонди раҳбари",
+        bilet: "Келиш: 07.07.2026 \n00:50\n(Бостон-Истанбул-\nТошкент TK370)\nКетиш: 15.07.2026\n05:50\n(Тошкент-Амман) Эконом\n41,027,000",
+        davlati: "АҚШ",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image127.png",
+        mehmon: "Имом Шодий ал-Сулаймон \nАвстралия миллий имомлар кенгаши (ANIC) президенти",
+        bilet: "Келиш: 05.06.2026 \n16:10\n(Сидней-Дубай-\nТошкент)\nқайтиш билети ўзи олади, Форумдан кейин турфирмага мурожаат қилган",
+        davlati: "АВСТРАЛИЯ",
+        toshkent: "Sayidat hotel\n201-хона (twins)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image188.png",
+        mehmon: "Фотима Ҳалил \n(Шоди Сулаймон ҳамроҳи турмуш ўртоғи)",
+        bilet: "—",
+        davlati: "АВСТРАЛИЯ",
+        toshkent: "Sayidat hotel\n201-хона (twins)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image39.png",
+        mehmon: "Браҳим Лайтус \nЕвропа тараққиёт ва тадқиқотлар академияси бош директори",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Истанбул-Тошкент TK368)\nКетиш: 11.07.2026\n06:00\n(Тошкент-\nИстанбул TK365)\nЭконом\n14,471,000",
+        davlati: "БЕЛЬГИЯ",
+        toshkent: "Inspira hotel\n(st)\n421",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image180.png",
+        mehmon: "Балаш Сёллёши \nБудапештнинг Лоранд Этвёш номидаги университети (ELTE) Тюркология кафедраси доценти",
+        bilet: "Келиш: 06.06.2026 \n17:25\n(Анкара-Тошкент A320neo)\nКетиш: 11.07.2026\n16:50\n(Тошкент-\nИстанбул HY-273)\n–",
+        davlati: "ВЕНГРИЯ",
+        toshkent: "Inspira\n425",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image168.png",
+        mehmon: "Роберт Ф. Блюм \nЖенева Дипломатик марказ раиси",
+        bilet: "—",
+        davlati: "ШВЕЙЦАРИЯ",
+        toshkent: "Hyatt Regency",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Malibu 01S743SC",
+    },
+    {
+        rasm: "../images/image248.png",
+        mehmon: "Арнолд Ясин Мол\nРоттердам ислом амалий фанлар университети доктори",
+        bilet: "Келиш: 07.07.2026 \n22:30\n(Амстердам-Истанбул-Тошкент TK0362)\nКетиш: 11.07.2026\n06:05\n(Тошкент- Истанбул TK0365)\n--",
+        davlati: "НИДЕРЛАНДИЯ",
+        toshkent: "Movenpick hotel\n(st)\n10,07,2026",
+        samarqand: "SILK WAY \n209",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image172.png",
+        mehmon: "Сулаймон Давлатзода \nТожикистон Республикаси Ҳукумати ҳузуридаги Дин ишлари, анъаналар, тантаналар ва маросимларни тартибга солиш қўмитаси раиси.",
+        bilet: "Келиш: 06.07.2026 \n23:20\n(Душанбе-Истанбул-Тошкент\nSZ-225)\nКетиш: 11.07.2026\n08:00\n(Тошкент- Душанбе НУ-717)\nҚайтиш билети ўз ҳисобидан\n\nБизнес\n          3,793,000",
+        davlati: "ТОЖИКИСТОН",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01461PPP",
+    },
+    {
+        rasm: "../images/image254.png",
+        mehmon: "Ҳамроҳи – Бахтиёр Юнусзода \nТожикистон Республикаси Ҳукумати ҳузуридаги Дин ишлари, анъаналар, тантаналар ва маросимларни тартибга солиш қўмитаси раиси",
+        bilet: "Келиш: 06.07.2026 \n23:20\n(Душанбе-Истанбул-Тошкент SZ-225)\nКетиш: 11.07.2026\n08:00\n(Тошкент- Душанбе НУ-717)\nЭконом\n5,261,000",
+        davlati: "ТОЖИКИСТОН",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image83.png",
+        mehmon: "Саидмукаррам Абдулқодирзода\nТожикистон мусулмонлари идораси раиси, муфтий",
+        bilet: "Келиш: 06.07.2026 \n23:20\n(Душанбе-Истанбул-Тошкент SZ-225)\nКетиш: 11.07.2026\n08:00\n(Тошкент- Душанбе НУ-717)\nЭконом\n5,261,000",
+        davlati: "ТОЖИКИСТОН",
+        toshkent: "—",
+        samarqand: "I",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image190.png",
+        mehmon: "Абдухолиқ Абдулқодирзода \nДин ишлари бўйича бирлашмалар бошқармаси бошлиғи",
+        bilet: "Келиш: 06.07.2026 \n23:20\n(Душанбе-Истанбул-Тошкент SZ-225)\nКетиш: 11.07.2026\n08:00\n(Тошкент- Душанбе НУ-717)\nЭконом\n5,261,000",
+        davlati: "ТОЖИКИСТОН",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image24.png",
+        mehmon: "Султан Раев \nХалқаро туркий маданият ташкилоти (ТУРКСОЙ) бош котиби",
+        bilet: "Келиш: 06.07.2026 \n19:10\n(Бишкек-Ташкент HY778)\n Кетиш: 09.07.2026\n07:40\n(Ташкент- Истанбул HY271)\nБизнес\n        41,602,000",
+        davlati: "ТУРКСОЙ",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01845PPP",
+    },
+    {
+        rasm: "../images/image31.png",
+        mehmon: "Авазхон Умаров\nРаев ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n17:25\n(Анкара-Ташкент HY292)\nКетиш:12.07.2026\n09:35\n( Ташкент- Истанбул VF584)\n Эконом\n10,016,000",
+        davlati: "ТУРКСОЙ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image147.png",
+        mehmon: "Волкан Месут\nРаев ҳамроҳи",
+        bilet: "Келиш: 06.07.2026 \n17:25\n(Анкара-Ташкент HY292)\nКетиш: 09.07.2026\n07:15\n(Ташкент- Анкара HY291) \nЭконом\n8,248,000",
+        davlati: "ТУРКСОЙ",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image154.png",
+        mehmon: "Шоҳин Мустафоев \nХалқаро Туркий академия президенти \nVIP",
+        bilet: "Келиш: 06.07.2026 \n01:00\n(Баку-Ташкент J2 531)\nКетиш: 12.07.2026\n07:35\n(Ташкент-Баку-\nJ2 531)\nБизнес\n        19,312,000",
+        davlati: "ХАЛҚАРО ТУРКИЙ АКАДЕМИЯ",
+        toshkent: "Hilton l",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Malibu 01M416HB",
+    },
+    {
+        rasm: "../images/image195.png",
+        mehmon: "Маҳмуд Эрол Қилич \nIRCICA Бош директори \nVIP",
+        bilet: "Келиш: 06.07.2026 \n19:00\n(Истанбул-Ташкент HY272)\nКетиш: 11.07.2026\n07:55\n(Термиз-Истанбул 2U-2901)\nБизнес\n24,520,000",
+        davlati: "IRCICA",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "Reikartz\n4004",
+        sabab: "Malibu 10X680GB",
+    },
+    {
+        rasm: "../images/image128.png",
+        mehmon: "Чингиз Тумар\nIRCICA  Бош директори ўринбосари",
+        bilet: "Келиш: 06.07.2026 \n19:00\n(Истанбул-Ташкент HY272)\nКетиш: 09.07.2026\n07:40\n(Ташкент- Истанбул HY271)\nЭконом\n7,070,000 + 790,000 ПЕРЕБРОНЬ + 688,000 ПЕРЕБРОН",
+        davlati: "IRCICA",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image207.png",
+        mehmon: "Аширбек Мўминов\nIRCICA  бош директори маслаҳатчиси",
+        bilet: "Келиш: 06.07.2026 \n19:00\n(Истанбул-Ташкент HY272)\nКетиш:  11.07.2026\n07:55\n(Термиз-Истанбул 2U-2901)\n Эконом\n7,790,000",
+        davlati: "IRCICA",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "Reikartz\n4014",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image78.png",
+        mehmon: "Салим ал-Малик\nБош директори",
+        bilet: "Келиш: 06.07.2026 \n07:55\nКасабланка (CMN) — Стамбул (IST)- Ташкент (TAS) TK368)\nКетиш: 11.07.2026\n21:00\n(Тошкент-Пекин CA778)\nБизнес\n41,592,000 + АПГРЕЙД \n16,951,000",
+        davlati: "ICESCO",
+        toshkent: "Hilton",
+        samarqand: "Hadith меҳмонхонаси",
+        termiz: "—",
+        sabab: "Mercedez Benz 222 01936PPP",
+    },
+    {
+        rasm: "../images/image21.png",
+        mehmon: "Абделилаҳ Бенарафа\nБош директор ўринбосари",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\n Бизнес\n46,113,000 + 12,571,000 ПЕРЕБРОНЬ",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image87.png",
+        mehmon: "Элчи Холид Фатҳурраҳмон\nМаданиятлараро мулоқот маркази директори",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\nКетиш: 11.07.2026\n21:00\n(Тошкент-Пекин CA778)\n–",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image110.png",
+        mehmon: "Салли Мабрук\nБош директори девони раҳбари",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\n            Бизнес\n46,113,000",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image189.png",
+        mehmon: "Усома Ҳайкал\nОммавий ахборот воситалари ва коммуникациялар сектори раҳбари",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\n–",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image64.png",
+        mehmon: "Анар Каримов\nШериклик ва халқаро ҳамкорлик сектори раҳбари",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Стамбул-Ташкент TK368)\nКетиш: 11.07.2026\n21:00\n(Тошкент-Пекин CA778)\n          Бизнес\n41,592,000 АПГРЕЙД 16,711,000",
+        davlati: "ICESCO",
+        toshkent: "Hilton",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "малибу",
+    },
+    {
+        rasm: "../images/image243.png",
+        mehmon: "Ҳанане Ғозий\nБош директори девони масъул ходими",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-Касабланка TK373)           Эконом\n15,712,000",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "IMOM BUHORIY HOTEL\n329",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image216.png",
+        mehmon: "Умайма Буҳаддиуи\nБош директори девони масъул ходими",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\nКетиш: 11.07.2026\n05:35\n(Самарқанд-Касабланка TK373)           Эконом\n15,712,000",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image141.png",
+        mehmon: "Марям Гафарзада\nБоку шаҳридаги минтақавий ваколатхонаси директори ёрдамчиси",
+        bilet: "–",
+        davlati: "ICESCO",
+        toshkent: "—",
+        samarqand: "IMOM BUHORIY HOTEL\n331",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image61.png",
+        mehmon: "Алакбар Хидиров\nБоку шаҳридаги минтақавий ваколатхонаси лойиҳа раҳбари",
+        bilet: "Келиш: 07.07.2026 \n01:00\n(Боку-Тошкент\nJ2 531)\n Кетиш 11.07.2026\n07:35\n(Тошкент-Боку HY755)\nЭКОНОМ\n7,370,000",
+        davlati: "ICESCO",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "IMOM BUHORIY HOTEL\n332",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image115.png",
+        mehmon: "Ҳани Албалавий\nМаданиятлараро мулоқот маркази эксперти",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\n Кетиш 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\nЭКОНОМ\n15,712,000",
+        davlati: "ICESCO",
+        toshkent: "—",
+        samarqand: "IMOM BUHORIY HOTEL\n333",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image37.png",
+        mehmon: "Элвин Аҳмадзода\nPICS дастури бўйича эксперт",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\n Кетиш 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\nЭКОНОМ\n18,860,000",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image86.png",
+        mehmon: "Муҳаммад Ақил Солиҳ\nОммавий ахборот воситалари ва коммуникациялар сектори масъул ходими",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\n Кетиш 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\nЭКОНОМ\n15,712,000",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "IMOM BUHORIY HOTEL\n335",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image73.png",
+        mehmon: "Ёсин Қуассир\nЖамоатчилик билан алоқалар ва протокол департаменти масъул ходими",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\n Кетиш 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\nЭКОНОМ\n15,712,000 + 5,977,000 ПЕРЕБРОН",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "IMOM BUHORIY HOTEL\n336",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image59.png",
+        mehmon: "Аззаби Соукайна\nМультимедиа мутахасиси",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Касабланка-Истанбул-Ташкент TK368)\n Кетиш 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\nЭКОНОМ\n16,310,000",
+        davlati: "ICESCO",
+        toshkent: "Hilton st",
+        samarqand: "IMOM BUHORIY HOTEL\n337",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image252.png",
+        mehmon: "Аҳмад Саид Баҳ\nICESCO Бош директори маслаҳатчиси",
+        bilet: "Келиш: 06.07.2026 \n7:55\n(Касабланка-Истанбул-Ташкент TK368)\n Кетиш 11.07.2026\n05:35\n(Самарқанд-Истанбул TK373)\nЭКОНОМ\n18,540,000",
+        davlati: "ICESCO",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "IMOM BUHORIY HOTEL\n338",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image245.png",
+        mehmon: "Элчи Ториқ Али Бахит \nИслом ҳамкорлик ташкилоти (ИҲТ) Бош котибининг гуманитар, маданий, ижтимоий ва оила масалалари бўйича ўринбосари\nVIP",
+        bilet: "Келиш: 06.07.2026 \n13:55\n(Жидда-Истанбул-\nТошкент TK366)\n Кетиш 11.07.2026\n08:50\n(Тошкент-\nИсломобод HY465)\nБИЗНЕС+ЭКОНОМ\n42,332,000",
+        davlati: "ИСЛОМ ҲАМКОРЛИК ТАШКИЛОТИ",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Malibu 01M272LB",
+    },
+    {
+        rasm: "../images/image205.png",
+        mehmon: "Тоҳа Айҳан \nИслом ҳамкорлик ташкилоти Ёшлар форуми (ICYF) президенти \nVIP",
+        bilet: "Келиш: 07.07.2026 \n00:50\n(Истанбул-Тошкент TK370)\nКетиш 08.07.2026\n23:50\n(Тошкент-Истанбул TK363)\nБИЗНЕС\n27,430,000",
+        davlati: "ИҲТ ЁШЛАР ФОРУМИ (ICYF)",
+        toshkent: "Movenpick hotel\n(PL)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Malibu 01A884RC",
+    },
+    {
+        rasm: "../images/image217.png",
+        mehmon: "Расул Умаров \nИслом ҳамкорлик ташкилоти Ёшлар форуми (ICYF) директори",
+        bilet: "Келиш: 07.07.2026 \n4:45\n(Истанбул-Тошкент TK364)\nКетиш 08.07.2026\n23:50\n(Тошкент-Истанбул ТК363)",
+        davlati: "ИҲТ ЁШЛАР ФОРУМИ (ICYF)",
+        toshkent: "—",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image193.png",
+        mehmon: "Абдулфаттоҳ Сулаймон Абдуллоҳ \nБутунжаҳон араб-ислом халқаро мактаблари федерацияси (WFAIIS) Бош котиби",
+        bilet: "Келиш: 06.07.2026 \n07:55\n(Қоҳира-Истанбул-Тошкент)\nКетиш 11.07.2026\n02:30\n(Тошкент- Истанбул)",
+        davlati: "БУТУНЖАҲОН АРАБ-ИСЛОМ ХАЛҚАРО МАКТАБЛАРИ ФЕДЕРАЦИЯСИ (WFAIIS)",
+        toshkent: "Movenpick hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "—",
+    },
+    {
+        rasm: "../images/image175.png",
+        mehmon: "Амр ал-Лайсий \nИслом телерадиоэшиттириш иттифоқи (IBU) президенти \nVIP",
+        bilet: "Келиш: 06.07.2026 \n07:55\nҚоҳира-Истанбул-\nТошкент TK368\n Кетиш 11.07.2026\n02:30\n(Тошкент- Истанбул TK371)",
+        davlati: "ИСЛОМ ТЕЛЕРАДИОЭШИТТИРИШ ИТТИФОҚИ (IBU)",
+        toshkent: "Inspira hotel\n(st)",
+        samarqand: "—",
+        termiz: "—",
+        sabab: "Malibu 01S966QC",
+    },
+];
+
+for (let el of products) {
+    forumCard.innerHTML += `
+<div class="
+fixed inset-0 
+bg-black/70 
+backdrop-blur-sm
+flex items-center justify-center
+p-5
+z-50
+">
+
+
+<div class="
+w-full
+max-w-3xl
+bg-[#111827]
+border border-slate-700
+rounded-3xl
+overflow-hidden
+shadow-2xl
+">
+
+
+<!-- TOP -->
+
+<div class="
+p-8
+bg-gradient-to-br
+from-blue-900/40
+to-[#111827]
+">
+
+
+<div class="flex flex-col md:flex-row gap-6 items-center">
+
+
+<img 
+src="${el.rasm}"
+class="
+w-40
+h-40
+rounded-3xl
+object-cover
+border-4
+border-blue-500/30
+shadow-lg
+">
+
+
+<div class="text-center md:text-left">
+
+
+<span class="
+inline-flex
+px-4 py-1
+rounded-full
+text-sm
+bg-blue-500/10
+border border-blue-500/30
+text-blue-400
+mb-4
+">
+
+${el.davlati}
+
+</span>
+
+
+<h2 class="
+text-3xl
+font-bold
+whitespace-pre-line
+leading-tight
+">
+
+${el.mehmon}
+
+</h2>
+
+
+<p class="text-slate-400 mt-3">
+Mehmon haqida ma'lumot
+</p>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<!-- INFO -->
+
+<div class="p-6 grid md:grid-cols-2 gap-4">
+
+
+
+<div class="
+bg-[#0b1220]
+border border-slate-700
+rounded-2xl
+p-5
+">
+
+<div class="flex gap-3">
+
+<div class="
+w-10 h-10
+rounded-xl
+bg-blue-500/20
+flex items-center justify-center
+">
+🎫
+</div>
+
+
+<div>
+
+<p class="text-slate-400 text-sm">
+Bilet
+</p>
+
+<p class="
+mt-2
+whitespace-pre-line
+font-medium
+">
+
+${el.bilet}
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="
+bg-[#0b1220]
+border border-slate-700
+rounded-2xl
+p-5
+">
+
+<div class="flex gap-3">
+
+<div class="
+w-10 h-10
+rounded-xl
+bg-green-500/20
+flex items-center justify-center
+">
+📍
+</div>
+
+
+<div>
+
+<p class="text-slate-400 text-sm">
+Toshkent
+</p>
+
+<p class="mt-2 font-semibold">
+${el.toshkent}
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="
+bg-[#0b1220]
+border border-slate-700
+rounded-2xl
+p-5
+">
+
+<div class="flex gap-3">
+
+
+<div class="
+w-10 h-10
+rounded-xl
+bg-purple-500/20
+flex items-center justify-center
+">
+🏛️
+</div>
+
+
+<div>
+
+<p class="text-slate-400 text-sm">
+Samarqand
+</p>
+
+
+<p class="mt-2 font-semibold">
+${el.samarqand}
+</p>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="
+bg-[#0b1220]
+border border-slate-700
+rounded-2xl
+p-5
+">
+
+<div class="flex gap-3">
+
+
+<div class="
+w-10 h-10
+rounded-xl
+bg-orange-500/20
+flex items-center justify-center
+">
+🏨
+</div>
+
+
+<div>
+
+<p class="text-slate-400 text-sm">
+Termiz
+</p>
+
+
+<p class="mt-2 font-semibold">
+${el.termiz}
+</p>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- SABAB -->
+
+<div class="px-6 pb-6">
+
+
+<div class="
+rounded-2xl
+border border-red-500/20
+bg-red-500/5
+p-5
+">
+
+
+<p class="
+text-red-400
+font-semibold
+">
+
+⚠️ Sabab
+
+</p>
+
+
+<p class="mt-2 text-slate-300">
+
+${el.sabab}
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<button
+class="
+mx-6 mb-6
+w-[calc(100%-48px)]
+py-4
+rounded-2xl
+bg-blue-600
+hover:bg-blue-500
+transition
+font-semibold
+">
+
+Yopish
+
+</button>
+
+
+
+
+</div>
+
+
+</div>
+`
+}
+
+
+let loading = document.querySelector(".loading")
+
+window.addEventListener("load", function () {
+    loading.classList.add("hidden")
+});

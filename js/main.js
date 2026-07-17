@@ -7,10 +7,10 @@ function nl2br(text) {
 let html = ""
 for (let el of products) {
     html += `
- <div
-class="group rounded-3xl bg-gradient-to-br from-slate-800 via-slate-900 to-[#0b1220] p-[1px] shadow-2xl transition-all duration-500 hover:shadow-blue-500/20 hover:-translate-y-1">
+ <a href="../pages/forum-people.html"
+ class="group rounded-3xl bg-gradient-to-br from-slate-800 via-slate-900 to-[#0b1220] p-[1px] shadow-2xl transition-all duration-500 hover:shadow-blue-500/20 hover:-translate-y-1">
 
-<div class="rounded-3xl bg-[#0f172a]/95 backdrop-blur-xl overflow-hidden">
+ <div class="rounded-3xl bg-[#0f172a]/95 backdrop-blur-xl overflow-hidden">
 
     <!-- IMAGE -->
     <div class="relative">
@@ -214,9 +214,9 @@ class="group rounded-3xl bg-gradient-to-br from-slate-800 via-slate-900 to-[#0b1
 
     </div>
 
-</div>
+ </div>
 
-</div>
+</a>
     `
 }
 cards.innerHTML = html
